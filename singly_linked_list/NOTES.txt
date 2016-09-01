@@ -1,0 +1,25 @@
+References singly linked list:
+-------------------------------------
+http://codereview.stackexchange.com/questions/13007/c-linked-list-implementation
+http://www.thegeekstuff.com/2012/08/c-linked-list-example/
+http://www.sanfoundry.com/c-program-implement-singly-linked-list/
+http://stackoverflow.com/questions/4235981/elegant-implementation-of-circular-singly-linked-list-in-c
+http://www.cprogramto.com/c-program-for-linked-list/
+http://codereview.stackexchange.com/questions/496/whats-the-cleanest-way-to-implement-a-delete-from-a-singly-linked-list-in-c
+http://codingfreak.blogspot.com/2010/04/singly-linked-list-in-c.html
+http://en.literateprograms.org/Singly_linked_list_(C)#Creating_and_manipulating_a_list
+http://pseudomuto.com/development/2013/05/02/implementing-a-generic-linked-list-in-c.html
+http://www.lemoda.net/c/singly-linked-list/
+http://www.cs.cf.ac.uk/Dave/C/node11.html#SECTION001140000000000000000
+http://books.google.dk/books?id=K4P32IpvyNMC&pg=PA144&lpg=PA144&dq=c+single+linked+list+void+data+pointer&source=bl&ots=_yqhjNKmTt&sig=pu-zTrNq1cVG4TsX-gWh4foMkPo&hl=en&sa=X&ei=paMDU5CmNObnygPmw4K4AQ&redir_esc=y#v=onepage&q=c%20single%20linked%20list%20void%20data%20pointer&f=false
+http://maiaco.com/articles/c/elegantLinkedList.php
+http://runnable.com/Us53QO5op1hWAACi/how-to-remove-a-node-from-a-linked-list-for-c%2B%2B
+https://www.cs.bu.edu/teaching/c/linked-list/delete/
+http://stackoverflow.com/questions/15776381/deleting-a-node-from-a-singly-linked-list-using-malloc-free
+http://www.youtube.com/watch?v=hHhs5LxyGI0
+http://gd.tuwien.ac.at/languages/c/programming-bbrown/c_094.htm
+http://www.codeproject.com/Articles/24684/How-to-create-Linked-list-using-C-C
+http://www.codeproject.com/Articles/641175/An-Introduction-to-Linked-Lists-in-C-Cplusplus
+http://c.learncodethehardway.org/book/ex32.html
+http://cplus.about.com/od/learningc/ss/pointers2.htm
+http://runnable.com/Us545Cg3skdWAAOo/how-to-clear-a-linked-list-remove-all-nodes-for-c%2B%2B
