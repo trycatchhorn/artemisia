@@ -213,15 +213,11 @@ int test_remove_stack() {
   push( i4, st );
   push( i5, st );
   remove_stack( st );
-  if ( !is_empty_stack( st ) ) {
-    result = -1;
-    free( st );
-    free( i1 );
-    free( i2 );
-    free( i3 );
-    free( i4 );
-    free( i5 );
-  }
+  free( i1 );
+  free( i2 );
+  free( i3 );
+  free( i4 );
+  free( i5 );
   return result;
 }
 

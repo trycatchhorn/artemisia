@@ -129,13 +129,19 @@ void print_stack( StackType* st ) {
 }
 
 void remove_stack( StackType* st ) {
-  free( st->base );
+  /*
+  if ( st->base != NULL ) {
+    free( st->base );
+  }
   if ( st->copy != NULL ) {
     st->copy_size = 0;
     free( st->copy );
   }
+  */
+  /*if ( st != NULL ) { */
   st->size = 0;
   st->max_size = 0;
   free( st );
+  /*}*/
 }
 

@@ -1,0 +1,13 @@
+singly_linked_list/lib/shared_lib/build
+singly_linked_list/lib/static_lib/build
+singly_linked_list/src/build
+singly_linked_list/test/lib_test/shared_lib_test/build
+singly_linked_list/test/lib_test/static_lib_test/build
+singly_linked_list/test/no_lib_test/build
+stack/lib/shared_lib/build
+stack/lib/static_lib/build
+stack/src/build
+stack/test/lib_test/shared_lib_test/build
+stack/test/lib_test/static_lib_test/build
+stack/test/no_lib_test/build
+
