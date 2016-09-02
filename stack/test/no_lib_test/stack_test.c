@@ -285,5 +285,5 @@ int main() {
   assert( test_top_stack() == 0 );
   assert( test_remove_stack() == 0 );
   assert( test_generate_random_stack() == 0);
-  return 1;
+  return 0;
 }

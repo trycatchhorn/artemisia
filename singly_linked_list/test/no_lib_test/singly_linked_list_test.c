@@ -419,5 +419,5 @@ int main() {
   assert( test_remove_none_singly_linked_list() == 0 );
   assert( test_remove_from_empty_singly_linked_list() == 0 );
   assert( test_remove_all_singly_linked_list() == 0 );
-  return 1;
+  return 0;
 }

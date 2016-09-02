@@ -15,5 +15,5 @@ int main() {
   free( e2 );
   free( e3 );
   free( list );
-  return 1;
+  return 0;
 }

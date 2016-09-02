@@ -26,5 +26,5 @@ int main() {
   printf( "%d \n", i2_data );
   printf( "%d \n", i3_data );
   print_stack( st );
-  return 1;
+  return 0;
 }
