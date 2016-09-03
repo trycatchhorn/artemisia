@@ -1,18 +1,18 @@
-INTRO
-#####
+Intro
+=====
 The stack source provided here is part of the Artemisia library. Although, the stack project is
 part of the Artemisia library, it is a self-contained API, which is build both as a static link 
 library and as a shared dynamic library. Additionally, a small test suite is included showing 
 how to use the stack API.
 
-COMPILING AND BUILDING THE SOURCE
-#################################
+Compiling and building 
+======================
 The easiest way to build the source is to run 'make' in the root of the stack directory. This
 will automatically compile and link everything related to the stack source. Additionally,
 a static link library and a dynamic link library are build together with a small test suite. 
 
-DIRECTORY STRUCTURE
-###################
+Directory structure
+===================
 The directory structure for the stack project follows the layout shown below. 
 
 - __stack__
