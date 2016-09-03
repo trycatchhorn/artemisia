@@ -51,27 +51,27 @@ The directory structure for the stack project follows the layout shown below.
     - Makefile
     - __lib_test__
       - Makefile
-      - ____shared___lib___test
+      - shared_lib_test
         - Makefile
         - __build__
           - __debug__
-            - ____stack___test___shared__libd
-            - ____stack___test___shared__libd.o
+            - stack_test_shared_libd
+            - stack_test_shared_libd.o
           - __release__
-            - ____stack___test___shared__lib
-            - ____stack___test___shared__lib.o
-        - ____stack___test___shared__lib.c
-      - ____static___lib___test
+            - stack_test_shared_lib
+            - stack_test_shared_lib.o
+        - stack_test_shared_lib.c
+      - static_lib_test
         - Makefile
         - __build__
           - __debug__
-            - ____stack___test___static__libs
-            - ____stack___test___static__libd.o
+            - stack_test_static_libs
+            - stack_test_static_libd.o
           - __release__
-            - ____stack___test___static__lib
-            - ____stack___test___static_lib.o
-        - ____stack___test____static_lib.c
-    - ____no___lib___test
+            - stack_test_static_lib
+            - stack_test_static_lib.o
+        - stack_test_static_lib.c
+    - __no_lib_test__
       - Makefile
       - __build__
         - __debug__
