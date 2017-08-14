@@ -23,3 +23,4 @@ http://www.codeproject.com/Articles/641175/An-Introduction-to-Linked-Lists-in-C-
 http://c.learncodethehardway.org/book/ex32.html
 http://cplus.about.com/od/learningc/ss/pointers2.htm
 http://runnable.com/Us545Cg3skdWAAOo/how-to-clear-a-linked-list-remove-all-nodes-for-c%2B%2B
+http://pseudomuto.com/development/2013/05/02/implementing-a-generic-linked-list-in-c/
