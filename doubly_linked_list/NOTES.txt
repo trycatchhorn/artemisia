@@ -1,0 +1,19 @@
+References doubly linked list:
+-------------------------------------
+
+https://gist.github.com/comcxx11/5890499
+https://vickychijwani.me/function-pointers-in-c-are-underrated/
+https://github.com/vickychijwani/os-assignments/blob/master/7/src/list.c
+http://aticleworld.com/generic-linked-list-in-c/
+https://gist.github.com/pseudomuto/6334796#file-list-h
+http://www.cplusplus.com/forum/beginner/88177/
+http://www.cprogrammingnotes.com/question/doubly-link-list-program.html
+http://www.geeksforgeeks.org/doubly-linked-list/
+http://wordaligned.org/articles/two-star-programming
+https://stackoverflow.com/questions/7271647/what-is-the-reason-for-using-a-double-pointer-when-adding-a-node-in-a-linked-lis
+https://grisha.org/blog/2013/04/02/linus-on-understanding-pointers/
+http://www.geeksforgeeks.org/function-pointer-in-c/
+https://www.cs.bu.edu/teaching/c/linked-list/delete/
+https://github.com/tomelm/C-Doubly-Linked-List/blob/master/list.c
+http://cs.umw.edu/~finlayson/class/spring15/cpsc230/notes/10-doubly-linked-lists.html
+
