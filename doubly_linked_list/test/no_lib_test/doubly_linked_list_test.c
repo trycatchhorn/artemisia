@@ -38,31 +38,32 @@ void debug_helper( DoublyLinkedList *plist, void (* print_func )(void*) ) {
   if ( NULL != plist ) {
     DoublyLinkedListElement *head = get_head_doubly_linked_list( plist );
     DoublyLinkedListElement *tail = get_tail_doubly_linked_list( plist );
-    if ( print_func == print_int ) {
-      printf( "%s", "[" );
-      DoublyLinkedListElement *current = head;
-      for( int i = 0; i < get_size_doubly_linked_list( plist ); ++i ) {
 
+    printf( "%s", "[" );
+    DoublyLinkedListElement *current = head;
+    for( int i = 0; i < get_size_doubly_linked_list( plist ); ++i ) {
+
+      if ( print_func == print_int ) {
         /* print_element_int( current ); */
         print_element_int( current );
-
-        if ( current != tail ) {
-          printf( "%s", ", " );
-        } else {
-          printf( "%s\n", "]" );
-        }
-
-
-
-        current = get_next_doubly_linked_list_element( current );
       }
 
-    }
-    if ( print_func == print_float ) {
-      print_doubly_linked_list( plist, print_float );
-    }
-    if ( print_func == print_char ) {
-      print_doubly_linked_list( plist, print_char );
+      if ( print_func == print_float ) {
+        print_doubly_linked_list( plist, print_float );
+      }
+
+      if ( print_func == print_char ) {
+        print_doubly_linked_list( plist, print_char );
+      }
+
+      if ( current != tail ) {
+          printf( "%s", ", " );
+      } else {
+        printf( "%s\n", "]" );
+      }
+
+      current = get_next_doubly_linked_list_element( current );
+
     }
   }
 }
