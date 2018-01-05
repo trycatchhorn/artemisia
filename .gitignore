@@ -1,3 +1,5 @@
+doubly_linked_list/src/build
+doubly_linked_list/test/no_lib_test/build
 singly_linked_list/lib/shared_lib/build
 singly_linked_list/lib/static_lib/build
 singly_linked_list/src/build
