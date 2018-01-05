@@ -35,26 +35,18 @@ void print_element_int( DoublyLinkedListElement *elem ) {
 }
 
 void debug_helper( DoublyLinkedList *plist, void (* print_func )(void*) ) {
+  int i;
   if ( NULL != plist ) {
     DoublyLinkedListElement *head = get_head_doubly_linked_list( plist );
     DoublyLinkedListElement *tail = get_tail_doubly_linked_list( plist );
 
     printf( "%s", "[" );
     DoublyLinkedListElement *current = head;
-    for( int i = 0; i < get_size_doubly_linked_list( plist ); ++i ) {
+    for( i = 0; i < get_size_doubly_linked_list( plist ); ++i ) {
 
       if ( print_func == print_int ) {
-        /* print_element_int( current ); */
         print_element_int( current );
       }
-
-        if ( current != tail ) {
-          printf( "%s", ", " );
-        } else {
-          printf( "%s\n", "]" );
-        }
-
-        current = get_next_doubly_linked_list_element( current );
 
       if ( print_func == print_float ) {
         print_doubly_linked_list( plist, print_float );
@@ -65,7 +57,7 @@ void debug_helper( DoublyLinkedList *plist, void (* print_func )(void*) ) {
       }
 
       if ( current != tail ) {
-          printf( "%s", ", " );
+        printf( "%s", ", " );
       } else {
         printf( "%s\n", "]" );
       }
