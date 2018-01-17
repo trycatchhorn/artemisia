@@ -137,7 +137,6 @@ void print_doubly_linked_list( DoublyLinkedList *plist, void (* print_elem )(voi
   else {
     printf( "%s", "[" );
     for ( i = 0; i < plist->size; ++i ) {
-      /*    while ( NULL != current ) { */
       (* print_elem )( current->data );
       if ( NULL != current->next && plist->tail != current ) {
         printf( "%s", " <-> " );
