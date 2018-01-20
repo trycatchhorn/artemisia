@@ -174,8 +174,55 @@ int test_create_doubly_linked_list_empty() {
   return 0;
 }
 
+int test_create_doubly_linked_list_int() {
+  int result = 0;
+  int i1 = 1;
+  int i2 = 2;
+  int i3 = 3;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
+  DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  prepend_doubly_linked_list( list, e3, sizeof( int ) );
+  prepend_doubly_linked_list( list, e2, sizeof( int ) );
+  prepend_doubly_linked_list( list, e1, sizeof( int ) );
+  if ( get_size_doubly_linked_list( list ) != 3 ) {
+    result = -1;
+  }
+  print_doubly_linked_list( list, print_int );
+  debug_helper( list, print_int );
+  free( e1 );
+  free( e2 );
+  free( e3 );
+  free( list );
+  return result;
+}
+
+int test_create_doubly_linked_list_float() {
+  int result = 0;
+  float f1 = 1.1f;
+  float f2 = 2.2f;
+  float f3 = 3.3f;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &f1, sizeof( float ) );
+  DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &f2, sizeof( float ) );
+  DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &f3, sizeof( float ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  prepend_doubly_linked_list( list, e3, sizeof( float ) );
+  prepend_doubly_linked_list( list, e2, sizeof( float ) );
+  prepend_doubly_linked_list( list, e1, sizeof( float ) );
+  if ( get_size_doubly_linked_list( list ) != 3 ) {
+    result = -1;
+  }
+  print_doubly_linked_list( list, print_float );
+  debug_helper( list, print_float );
+  free( e1 );
+  free( e2 );
+  free( e3 );
+  free( list );
+  return result;
+}
+
 int test_create_doubly_linked_list_char() {
-  DoublyLinkedListElement *tmp;
   char elem_head_value_ref;
   char elem_head_value_res;
   int result = 0;
@@ -193,7 +240,7 @@ int test_create_doubly_linked_list_char() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  /*print_doubly_linked_list( list, print_char );*/
+  print_doubly_linked_list( list, print_char );
   debug_helper( list, print_char );
   free( e1 );
   free( e2 );
@@ -201,7 +248,6 @@ int test_create_doubly_linked_list_char() {
   free( list );
   return result;
 }
-
 
 int test_get_head_doubly_linked_list() {
   DoublyLinkedListElement *tmp;
@@ -603,8 +649,12 @@ int main() {
   assert( test_create_doubly_linked_list_element_int() == 0 );
   assert( test_create_doubly_linked_list_element_float() == 0 );
   assert( test_create_doubly_linked_list_element_char() == 0 );
+
   assert( test_create_doubly_linked_list_empty() == 0 );
+  assert( test_create_doubly_linked_list_int() == 0 );
+  assert( test_create_doubly_linked_list_float() == 0 );
   assert( test_create_doubly_linked_list_char() == 0 );
+
   assert( test_get_head_doubly_linked_list() == 0 );
   assert( test_get_tail_doubly_linked_list() == 0 );
   assert( test_get_element_at_doubly_linked_list() == 0 );

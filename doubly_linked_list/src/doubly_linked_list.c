@@ -39,7 +39,7 @@ DoublyLinkedListElement* create_doubly_linked_list_element( void *data, size_t d
       return NULL;
     }
     for ( off_set = 0; off_set < data_size; off_set++ ) {
-      /* We need to cast to (char *), since arithemetic
+      /* We need to cast to (char *), since arithmetic
        * on (void *) is not allowed when compiling with
        * the flag "-pedantic".
       */
