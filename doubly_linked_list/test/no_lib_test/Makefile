@@ -19,11 +19,11 @@ endif
 
 # Compiler flags for building.
 ifeq ($(MACOSX), true)
-	C_DEBUG_FLAGS = -g -Wall -O0 -ansi -pedantic -Qunused-arguments
-	C_RELEASE_FLAGS = -Wall -O2 -Os -ansi -pedantic -Qunused-arguments
+	C_FLAGS_DEBUG = -DDEBUG -g -Wall -O0 -ansi -pedantic -Qunused-arguments
+	C_FLAGS_RELEASE = -Wall -O2 -Os -ansi -pedantic -Qunused-arguments
 else
-	C_DEBUG_FLAGS = -g -Wall -O0 -ansi -pedantic
-	C_RELEASE_FLAGS = -Wall -O2 -Os -ansi -pedantic
+	C_FLAGS_DEBUG = -DDEBUG -g -Wall -O0 -ansi -pedantic
+	C_FLAGS_RELEASE = -Wall -O2 -Os -ansi -pedantic
 endif
 
 # Directory structure for the build.

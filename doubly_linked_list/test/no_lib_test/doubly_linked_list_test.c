@@ -17,13 +17,15 @@ void print_char( void *char_val ) {
 }
 
 void print_element_int( DoublyLinkedListElement *elem ) {
+  DoublyLinkedListElement *elem_prev;
+  DoublyLinkedListElement *elem_next;
   int elem_data = 0;
   int data_prev = 0;
   int data_next = 0;
   if ( NULL != elem ) {
     elem_data = *( int * ) get_data_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_prev = get_previous_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_next = get_next_doubly_linked_list_element( elem );
+    elem_prev = get_previous_doubly_linked_list_element( elem );
+    elem_next = get_next_doubly_linked_list_element( elem );
     if ( NULL != elem_prev ) {
       data_prev = *( int * ) get_data_doubly_linked_list_element( elem_prev );
     }
@@ -35,13 +37,15 @@ void print_element_int( DoublyLinkedListElement *elem ) {
 }
 
 void print_element_float( DoublyLinkedListElement *elem ) {
+  DoublyLinkedListElement *elem_prev;
+  DoublyLinkedListElement *elem_next;
   float elem_data = 0.0f;
   float data_prev = 0.0f;
   float data_next = 0.0f;
   if ( NULL != elem ) {
     elem_data = *( float * ) get_data_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_prev = get_previous_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_next = get_next_doubly_linked_list_element( elem );
+    elem_prev = get_previous_doubly_linked_list_element( elem );
+    elem_next = get_next_doubly_linked_list_element( elem );
     if ( NULL != elem_prev ) {
       data_prev = *( float * ) get_data_doubly_linked_list_element( elem_prev );
     }
@@ -53,13 +57,15 @@ void print_element_float( DoublyLinkedListElement *elem ) {
 }
 
 void print_element_char( DoublyLinkedListElement *elem ) {
+  DoublyLinkedListElement *elem_prev;
+  DoublyLinkedListElement *elem_next;
   char elem_data = 0;
   char data_prev = 0;
   char data_next = 0;
   if ( NULL != elem ) {
     elem_data = *( char * ) get_data_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_prev = get_previous_doubly_linked_list_element( elem );
-    DoublyLinkedListElement *elem_next = get_next_doubly_linked_list_element( elem );
+    elem_prev = get_previous_doubly_linked_list_element( elem );
+    elem_next = get_next_doubly_linked_list_element( elem );
     if ( NULL != elem_prev ) {
       data_prev = *( char * ) get_data_doubly_linked_list_element( elem_prev );
     }
@@ -70,15 +76,17 @@ void print_element_char( DoublyLinkedListElement *elem ) {
   }
 }
 
-
 void debug_helper( DoublyLinkedList *plist, void (* print_func )(void*) ) {
+  DoublyLinkedListElement *head;
+  DoublyLinkedListElement *tail;
+  DoublyLinkedListElement *current;
   int i;
   if ( NULL != plist ) {
-    DoublyLinkedListElement *head = get_head_doubly_linked_list( plist );
-    DoublyLinkedListElement *tail = get_tail_doubly_linked_list( plist );
+    head = get_head_doubly_linked_list( plist );
+    tail = get_tail_doubly_linked_list( plist );
 
     printf( "%s", "[" );
-    DoublyLinkedListElement *current = head;
+    current = head;
     for( i = 0; i < get_size_doubly_linked_list( plist ); ++i ) {
 
       if ( print_func == print_int ) {
@@ -120,11 +128,12 @@ int test_create_doubly_linked_list_element_int() {
   int elem_value;
   int elem_value_ref;
   DoublyLinkedListElement *elem;
+  void *elem_data;
   int result = 0;
   elem_value = 10;
   elem_value_ref = 10;
   elem = create_doubly_linked_list_element( &elem_value, sizeof( int ) );
-  void *elem_data = get_data_doubly_linked_list_element( elem );
+  elem_data = get_data_doubly_linked_list_element( elem );
   if ( elem_value_ref != *( ( int * ) elem_data ) ) {
     result = -1;
   }
@@ -136,11 +145,12 @@ int test_create_doubly_linked_list_element_float() {
   float elem_value;
   float elem_value_ref;
   DoublyLinkedListElement *elem;
+  void *elem_data;
   int result = 0;
   elem_value = 10.0f;
   elem_value_ref = 10.0f;
   elem = create_doubly_linked_list_element( &elem_value, sizeof( float ) );
-  void *elem_data = get_data_doubly_linked_list_element( elem );
+  elem_data = get_data_doubly_linked_list_element( elem );
   if ( elem_value_ref != *( ( float * ) elem_data ) ) {
     result = -1;
   }
@@ -152,11 +162,12 @@ int test_create_doubly_linked_list_element_char() {
   char elem_value;
   char elem_value_ref;
   DoublyLinkedListElement *elem;
+  void *elem_data;
   int result = 0;
   elem_value = 'a';
   elem_value_ref = 'a';
   elem = create_doubly_linked_list_element( &elem_value, sizeof( char ) );
-  void *elem_data = get_data_doubly_linked_list_element( elem );
+  elem_data = get_data_doubly_linked_list_element( elem );
   if ( elem_value_ref != *( ( char * ) elem_data ) ) {
     result = -1;
   }
@@ -189,8 +200,10 @@ int test_create_doubly_linked_list_int() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  print_doubly_linked_list( list, print_int );
-  debug_helper( list, print_int );
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e1 );
   free( e2 );
   free( e3 );
@@ -213,8 +226,10 @@ int test_create_doubly_linked_list_float() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  print_doubly_linked_list( list, print_float );
-  debug_helper( list, print_float );
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_float );
+    debug_helper( list, print_float );
+  #endif
   free( e1 );
   free( e2 );
   free( e3 );
@@ -223,13 +238,10 @@ int test_create_doubly_linked_list_float() {
 }
 
 int test_create_doubly_linked_list_char() {
-  char elem_head_value_ref;
-  char elem_head_value_res;
   int result = 0;
   char c1 = 'a';
   char c2 = 'b';
   char c3 = 'c';
-  elem_head_value_ref = 'a';
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &c1, sizeof( char ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &c2, sizeof( char ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &c3, sizeof( char ) );
@@ -240,8 +252,10 @@ int test_create_doubly_linked_list_char() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  print_doubly_linked_list( list, print_char );
-  debug_helper( list, print_char );
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_char );
+    debug_helper( list, print_char );
+  #endif
   free( e1 );
   free( e2 );
   free( e3 );
@@ -257,7 +271,6 @@ int test_get_head_doubly_linked_list() {
   char c1 = 'a';
   char c2 = 'b';
   char c3 = 'c';
-  elem_head_value_ref = 'a';
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &c1, sizeof( char ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &c2, sizeof( char ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &c3, sizeof( char ) );
@@ -269,12 +282,11 @@ int test_get_head_doubly_linked_list() {
     result = -1;
   }
   tmp = get_head_doubly_linked_list( list );
+  elem_head_value_ref = 'a';
   elem_head_value_res = *( ( char *) get_data_doubly_linked_list_element( tmp ) );
   if ( elem_head_value_res != elem_head_value_ref ) {
     result = -1;
   }
-  /*print_doubly_linked_list( list, print_char );*/
-  debug_helper( list, print_char );
   free( e1 );
   free( e2 );
   free( e3 );
@@ -290,7 +302,6 @@ int test_get_tail_doubly_linked_list() {
   char c1 = 'a';
   char c2 = 'b';
   char c3 = 'c';
-  elem_head_value_ref = 'c';
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &c1, sizeof( char ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &c2, sizeof( char ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &c3, sizeof( char ) );
@@ -302,11 +313,11 @@ int test_get_tail_doubly_linked_list() {
     result = -1;
   }
   tmp = get_tail_doubly_linked_list( list );
+  elem_head_value_ref = 'c';
   elem_head_value_res = *( ( char *) get_data_doubly_linked_list_element( tmp ) );
   if ( elem_head_value_res != elem_head_value_ref ) {
     result = -1;
   }
-  /*print_doubly_linked_list( list, print_char );*/
   free( e1 );
   free( e2 );
   free( e3 );
@@ -366,9 +377,6 @@ int test_is_equal_doubly_linked_list() {
   prepend_doubly_linked_list( list2, e6, sizeof( char ) );
   prepend_doubly_linked_list( list2, e5, sizeof( char ) );
   prepend_doubly_linked_list( list2, e4, sizeof( char ) );
-
-  /*print_doubly_linked_list( list1, print_char );*/
-  /*print_doubly_linked_list( list2, print_char );*/
 
   if ( ! is_equal_doubly_linked_list( list1, list2, is_equal_char ) ) {
     result = -1;
@@ -435,8 +443,10 @@ int test_prepend_doubly_linked_list() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  /* print_doubly_linked_list( list, print_int ); */
-  /* debug_helper( list, print_int ); */
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e1 );
   free( e2 );
   free( e3 );
@@ -459,16 +469,16 @@ int test_append_doubly_linked_list() {
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
-  print_doubly_linked_list( list, print_int );
-  debug_helper( list, print_int );
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e1 );
   free( e2 );
   free( e3 );
   free( list );
   return result;
 }
-
-
 
 int test_remove_element_head_doubly_linked_list() {
   int result = 0;
@@ -497,6 +507,10 @@ int test_remove_element_head_doubly_linked_list() {
   if ( -1 == result ) {
     free( e1 );
   }
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e2 );
   free( e3 );
   free( e4 );
@@ -532,6 +546,10 @@ int test_remove_element_middle_doubly_linked_list() {
   if ( -1 == result ) {
     free( e1 );
   }
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e2 );
   free( e3 );
   free( e4 );
@@ -559,16 +577,18 @@ int test_remove_element_tail_doubly_linked_list() {
   append_doubly_linked_list( list, e3, sizeof( int ) );
   append_doubly_linked_list( list, e4, sizeof( int ) );
   append_doubly_linked_list( list, e5, sizeof( int ) );
-  /*print_doubly_linked_list( list, print_int );*/
   remove_element_doubly_linked_list( list, e5, is_equal_int );
   new_tail = get_tail_doubly_linked_list( list );
-  /*print_doubly_linked_list( list, print_int );*/
   if ( !is_equal_int( new_tail, e4 ) ) {
     result = -1;
   }
   if ( -1 == result ) {
     free( e1 );
   }
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
   free( e2 );
   free( e3 );
   free( e4 );
@@ -604,20 +624,13 @@ int test_remove_element_at_doubly_linked_list_one() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
-
-  /* here we should verify that the doubly linked list is valid,
-     which means that all elements have valid fields: data, prev,
-     and next.
-  */
-
-
-  /* debug_helper( list, print_int ); */
   remove_element_at_doubly_linked_list( list, 1 );
-  /* debug_helper( list, print_int ); */
-
-  return 0;
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
+  return result;
 }
-
 
 int test_remove_element_at_doubly_linked_list_two() {
   int result = 0;
@@ -631,18 +644,12 @@ int test_remove_element_at_doubly_linked_list_two() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
-
-  /* here we should verify that the doubly linked list is valid,
-     which means that all elements have valid fields: data, prev,
-     and next.
-  */
-
-
-  /* debug_helper( list, print_int ); */
   remove_element_at_doubly_linked_list( list, 2 );
-  /* debug_helper( list, print_int ); */
-
-  return 0;
+  #ifdef DEBUG
+    print_doubly_linked_list( list, print_int );
+    debug_helper( list, print_int );
+  #endif
+  return result;
 }
 
 int main() {
