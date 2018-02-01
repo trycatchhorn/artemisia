@@ -2,18 +2,6 @@
 #include <stdlib.h>
 #include "../include/doubly_linked_list.h"
 
-/* TOOO:
-   - IMPORTANT: rewrite prepend and append accoring to reference to make node pointer correct.
-   - consider using function pointer in remove for removing element data.
-   - ensure list is valid after: prepend, append, and remove operations.
-   - ensure 'size' field are maintained in all mutable operations.
-   - ensure 'head' -and 'tail' fields are maintained in all mutable operations.
-   - consider returning bool instead of int in success/fail.
-   - consider using debug flag when compiling/running in debug.
-   - wrap up tests.
-   - write comments.
- */
-
 struct doubly_linked_list_element {
   void *data;
   struct doubly_linked_list_element *prev;
@@ -126,7 +114,7 @@ DoublyLinkedListElement* get_element_at_doubly_linked_list( DoublyLinkedList *pl
   return current;
 }
 
-void print_doubly_linked_list( DoublyLinkedList *plist, void (* print_elem )(void*) ) {
+void print_doubly_linked_list_forward( DoublyLinkedList *plist, void (* print_elem )(void*) ) {
   int i;
   DoublyLinkedListElement *current;
   current = plist->head;
@@ -142,6 +130,27 @@ void print_doubly_linked_list( DoublyLinkedList *plist, void (* print_elem )(voi
         printf( "%s", " <-> " );
       }
       current = current->next;
+    }
+    printf( "%s \n", "]" );
+  }
+}
+
+void print_doubly_linked_list_backward( DoublyLinkedList *plist, void (* print_elem )(void*) ) {
+  int i;
+  DoublyLinkedListElement *current;
+  current = plist->tail;
+  if ( NULL == current ) {
+    printf( "%s \n", "[ ]" );
+    return;
+  }
+  else {
+    printf( "%s", "[" );
+    for ( i = plist->size - 1; i >= 0; --i ) {
+      (* print_elem )( current->data );
+      if ( NULL != current->prev && plist->head != current ) {
+        printf( "%s", " <-> " );
+      }
+      current = current->prev;
     }
     printf( "%s \n", "]" );
   }
@@ -308,11 +317,11 @@ void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) 
     next = current->next;
     prev = current->prev;
     printf( "::6::\n" );
-    /*
+
     printf( "%s%d\n", "element being removed: ", ( * (int *) current->data ) );
     printf( "%s%d\n", "prev field of element being being removed: ", ( * (int *) prev->data ) );
     printf( "%s%d\n", "next field of element being being removed: ", ( * (int *) next->data ) );
-    */
+
 
     /* update the pointers to remove the element */
     prev->next = next;

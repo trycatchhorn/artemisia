@@ -35,7 +35,9 @@ DoublyLinkedListElement* get_tail_doubly_linked_list( DoublyLinkedList *plist );
 DoublyLinkedListElement* get_element_at_doubly_linked_list( DoublyLinkedList *plist, int index );
 
 
-void print_doubly_linked_list( DoublyLinkedList *plist, void ( * print_elem ) ( void * ) );
+void print_doubly_linked_list_forward( DoublyLinkedList *plist, void ( * print_elem ) ( void * ) );
+
+void print_doubly_linked_list_backward( DoublyLinkedList *plist, void ( * print_elem ) ( void * ) );
 
 DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size_t data_size );
 

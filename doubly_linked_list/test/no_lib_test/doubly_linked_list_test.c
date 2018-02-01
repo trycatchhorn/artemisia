@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "doubly_linked_list.h"
 
+/* Define helper function used in tests */
+
 void print_int( void *int_val ) {
   printf( "%d", *( int * ) int_val );
 }
@@ -124,6 +126,8 @@ bool is_equal_char( DoublyLinkedListElement *elem1, DoublyLinkedListElement *ele
   return ( elem1_data == elem2_data );
 }
 
+/* Begin test of doubly linked list */
+
 int test_create_doubly_linked_list_element_int() {
   int elem_value;
   int elem_value_ref;
@@ -138,6 +142,11 @@ int test_create_doubly_linked_list_element_int() {
     result = -1;
   }
   free( elem );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_element_int -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_element_int -> FAIL" );
+  }
   return result;
 }
 
@@ -155,6 +164,11 @@ int test_create_doubly_linked_list_element_float() {
     result = -1;
   }
   free( elem );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_element_float -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_element_float -> FAIL" );
+  }
   return result;
 }
 
@@ -201,7 +215,8 @@ int test_create_doubly_linked_list_int() {
     result = -1;
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
+    print_doubly_linked_list_backward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e1 );
@@ -227,7 +242,7 @@ int test_create_doubly_linked_list_float() {
     result = -1;
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_float );
+    print_doubly_linked_list_forward( list, print_float );
     debug_helper( list, print_float );
   #endif
   free( e1 );
@@ -253,7 +268,7 @@ int test_create_doubly_linked_list_char() {
     result = -1;
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_char );
+    print_doubly_linked_list_forward( list, print_char );
     debug_helper( list, print_char );
   #endif
   free( e1 );
@@ -444,7 +459,7 @@ int test_prepend_doubly_linked_list() {
     result = -1;
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e1 );
@@ -470,7 +485,7 @@ int test_append_doubly_linked_list() {
     result = -1;
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e1 );
@@ -508,7 +523,7 @@ int test_remove_element_head_doubly_linked_list() {
     free( e1 );
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e2 );
@@ -547,7 +562,7 @@ int test_remove_element_middle_doubly_linked_list() {
     free( e1 );
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e2 );
@@ -586,7 +601,7 @@ int test_remove_element_tail_doubly_linked_list() {
     free( e1 );
   }
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   free( e2 );
@@ -612,6 +627,26 @@ int test_remove_all_doubly_linked_list() {
   return 0;
 }
 
+int test_remove_element_at_doubly_linked_list_zero() {
+  int result = 0;
+  int i1 = 1;
+  int i2 = 2;
+  int i3 = 3;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
+  DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  append_doubly_linked_list( list, e1, sizeof( int ) );
+  append_doubly_linked_list( list, e2, sizeof( int ) );
+  append_doubly_linked_list( list, e3, sizeof( int ) );
+  remove_element_at_doubly_linked_list( list, 0 );
+  #ifdef DEBUG
+    print_doubly_linked_list_forward( list, print_int );
+    debug_helper( list, print_int );
+  #endif
+  return result;
+}
+
 int test_remove_element_at_doubly_linked_list_one() {
   int result = 0;
   int i1 = 1;
@@ -626,7 +661,7 @@ int test_remove_element_at_doubly_linked_list_one() {
   append_doubly_linked_list( list, e3, sizeof( int ) );
   remove_element_at_doubly_linked_list( list, 1 );
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   return result;
@@ -646,7 +681,7 @@ int test_remove_element_at_doubly_linked_list_two() {
   append_doubly_linked_list( list, e3, sizeof( int ) );
   remove_element_at_doubly_linked_list( list, 2 );
   #ifdef DEBUG
-    print_doubly_linked_list( list, print_int );
+    print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
   return result;
@@ -680,8 +715,11 @@ int main() {
   assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   assert( test_remove_all_doubly_linked_list() == 0 );
   */
+  /*
+  assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
+ */
 
 
   return 0;
