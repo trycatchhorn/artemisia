@@ -186,16 +186,27 @@ int test_create_doubly_linked_list_element_char() {
     result = -1;
   }
   free( elem );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_element_char -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_element_char -> FAIL" );
+  }
   return result;
 }
 
 int test_create_doubly_linked_list_empty() {
+  int result = 0;
   DoublyLinkedList *list;
   list = create_doubly_linked_list();
   if ( NULL == list ) {
-    return -1;
+    result = -1;
   }
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_empty -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_empty -> FAIL" );
+  }
   return 0;
 }
 
@@ -223,6 +234,11 @@ int test_create_doubly_linked_list_int() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_int -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_int -> FAIL" );
+  }
   return result;
 }
 
@@ -249,6 +265,11 @@ int test_create_doubly_linked_list_float() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_float -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_float -> FAIL" );
+  }
   return result;
 }
 
@@ -275,6 +296,11 @@ int test_create_doubly_linked_list_char() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_create_doubly_linked_list_char -> OK" );
+  } else {
+    printf( "%s \n", "test_create_doubly_linked_list_char -> FAIL" );
+  }
   return result;
 }
 
@@ -306,6 +332,11 @@ int test_get_head_doubly_linked_list() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_get_head_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_get_head_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -337,6 +368,11 @@ int test_get_tail_doubly_linked_list() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_get_tail_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_get_tail_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -366,6 +402,11 @@ int test_get_element_at_doubly_linked_list() {
   res3 = get_element_at_doubly_linked_list( list, 2 );
   if ( !is_equal_char( res3, e3 ) ) {
     result = -1;
+  }
+  if ( result == 0 ) {
+    printf( "%s \n", "test_get_element_at_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_get_element_at_doubly_linked_list -> FAIL" );
   }
   return result;
 }
@@ -404,6 +445,11 @@ int test_is_equal_doubly_linked_list() {
   free( e6 );
   free( list1 );
   free( list2 );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_is_equal_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_is_equal_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -415,6 +461,11 @@ int test_get_size_doubly_linked_list() {
     result = -1;
   }
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_get_size_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_get_size_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -440,6 +491,11 @@ int test_shallow_copy_doubly_linked_list() {
   free( e3 );
   free( list );
   free( list_copy );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_shallow_copy_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_shallow_copy_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -466,6 +522,11 @@ int test_prepend_doubly_linked_list() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_prepend_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_prepend_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -492,6 +553,11 @@ int test_append_doubly_linked_list() {
   free( e2 );
   free( e3 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_append_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_append_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -531,6 +597,11 @@ int test_remove_element_head_doubly_linked_list() {
   free( e4 );
   free( e5 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_head_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_head_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -570,6 +641,11 @@ int test_remove_element_middle_doubly_linked_list() {
   free( e4 );
   free( e5 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_middle_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_middle_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
@@ -609,6 +685,11 @@ int test_remove_element_tail_doubly_linked_list() {
   free( e4 );
   free( e5 );
   free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_tail_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_tail_doubly_linked_list -> FAIL" );
+  }
   return result;
 }
 
