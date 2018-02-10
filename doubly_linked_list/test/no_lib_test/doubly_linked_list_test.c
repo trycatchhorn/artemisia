@@ -694,18 +694,110 @@ int test_remove_element_tail_doubly_linked_list() {
 }
 
 int test_remove_element_none_doubly_linked_list() {
-  printf( "%s \n", "test_remove_none_doubly_linked_list() --- NOT YET IMPLEMENTED" );
-  return 0;
+  int result = 0;
+  int i1 = 21;
+  int i2 = 32;
+  int i3 = 16;
+  int i4 = 12;
+  int i5 = 14;
+  int i6 = 17;
+  DoublyLinkedListElement* e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedListElement* e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
+  DoublyLinkedListElement* e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
+  DoublyLinkedListElement* e4 = create_doubly_linked_list_element( &i4, sizeof( int ) );
+  DoublyLinkedListElement* e5 = create_doubly_linked_list_element( &i5, sizeof( int ) );
+  DoublyLinkedListElement* e6 = create_doubly_linked_list_element( &i6, sizeof( int ) );
+  DoublyLinkedList* list = create_doubly_linked_list();
+  append_doubly_linked_list( list, e1, sizeof( int ) );
+  append_doubly_linked_list( list, e2, sizeof( int ) );
+  append_doubly_linked_list( list, e3, sizeof( int ) );
+  append_doubly_linked_list( list, e4, sizeof( int ) );
+  append_doubly_linked_list( list, e5, sizeof( int ) );
+  remove_element_doubly_linked_list( list, e6, is_equal_int );
+  if ( get_size_doubly_linked_list( list ) != 5 ) {
+    result = -1;
+  }
+  free( e1 );
+  free( e2 );
+  free( e3 );
+  free( e4 );
+  free( e5 );
+  free( e6 );
+  free( list );
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_none_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_none_doubly_linked_list -> FAIL" );
+  }
+  return result;
 }
 
 int test_remove_element_from_empty_doubly_linked_list() {
-  printf( "%s \n", "test_remove_from_empty_doubly_linked_list() --- NOT YET IMPLEMENTED" );
-  return 0;
+  int result = 0;
+  int i1 = 21;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  remove_element_doubly_linked_list( list, e1, is_equal_int );
+  if ( get_size_doubly_linked_list( list ) != 0 ) {
+    result = -1;
+  }
+  if ( NULL != get_head_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( NULL != get_tail_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> FAIL" );
+  }
+  free( e1 );
+  free( list );
+  return result;
 }
 
 int test_remove_all_doubly_linked_list() {
-  printf( "%s \n", "test_remove_all_doubly_linked_list() --- NOT YET IMPLEMENTED" );
-  return 0;
+  int result = 0;
+  int i1 = 1;
+  int i2 = 2;
+  int i3 = 3;
+  int i4 = 4;
+  int i5 = 5;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
+  DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
+  DoublyLinkedListElement *e4 = create_doubly_linked_list_element( &i4, sizeof( int ) );
+  DoublyLinkedListElement *e5 = create_doubly_linked_list_element( &i5, sizeof( int ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  append_doubly_linked_list( list, e1, sizeof( int ) );
+  append_doubly_linked_list( list, e2, sizeof( int ) );
+  append_doubly_linked_list( list, e3, sizeof( int ) );
+  append_doubly_linked_list( list, e4, sizeof( int ) );
+  append_doubly_linked_list( list, e5, sizeof( int ) );
+  remove_all_doubly_linked_list( list );
+  if ( get_size_doubly_linked_list( list ) != 0 ) {
+    result = -1;
+  }
+  if ( NULL != get_element_at_doubly_linked_list( list, 0 ) ) {
+    result = -1;
+  }
+  if ( NULL != get_element_at_doubly_linked_list( list, 1 ) ) {
+    result = -1;
+  }
+  if ( NULL != get_head_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( NULL != get_tail_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_all_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_all_doubly_linked_list -> FAIL" );
+  }
+  free( list );
+  return result;
 }
 
 int test_remove_element_at_doubly_linked_list_zero() {
@@ -791,11 +883,11 @@ int main() {
   assert( test_remove_element_middle_doubly_linked_list() == 0 );
   assert( test_remove_element_tail_doubly_linked_list() == 0 );
 
-  /*
+
   assert( test_remove_element_none_doubly_linked_list() == 0 );
   assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   assert( test_remove_all_doubly_linked_list() == 0 );
-  */
+
   /*
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );

@@ -243,10 +243,6 @@ int append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement 
   return 0;
 }
 
-
-
-
-
 void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, is_equal_doubly_linked_list_elements equal_func ) {
   DoublyLinkedListElement *previous = NULL;
   DoublyLinkedListElement *current = plist->head;
@@ -273,6 +269,24 @@ void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedLis
     previous = current;
     current = current->next;
   }
+}
+
+void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
+  DoublyLinkedListElement* tmp;
+  DoublyLinkedListElement* current;
+  if ( NULL == plist || !plist->size ) {
+    return;
+  }
+
+  current = plist->head;
+  while ( NULL != current ) {
+    tmp = current;
+    current = tmp->next;
+    free( tmp );
+    --plist->size;
+  }
+  plist->head = NULL;
+  plist->tail = NULL;
 }
 
 void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) {
@@ -338,7 +352,14 @@ void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) 
   /*  free( current->next ); */
   /* Unlink the element from the doubly linked list */
   /*  current->next = next;*/
+}
 
-
+void traverse( DoublyLinkedList *plist, element_operation do_func ) {
+  int i;
+  DoublyLinkedListElement *current = plist->head;
+  for ( i = 0; i < plist->size; i++ ) {
+    do_func( current->data );
+    current = current->next;
+  }
 }
 
