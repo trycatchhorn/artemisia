@@ -812,7 +812,10 @@ int test_remove_element_at_doubly_linked_list_zero() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
+  printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero" );
+  print_doubly_linked_list_forward( list, print_int );
   remove_element_at_doubly_linked_list( list, 0 );
+  print_doubly_linked_list_forward( list, print_int );
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
@@ -832,7 +835,10 @@ int test_remove_element_at_doubly_linked_list_one() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
+  print_doubly_linked_list_forward( list, print_int );
+  printf( "%s \n", "test_remove_element_at_doubly_linked_list_one" );
   remove_element_at_doubly_linked_list( list, 1 );
+  print_doubly_linked_list_forward( list, print_int );
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
@@ -852,7 +858,10 @@ int test_remove_element_at_doubly_linked_list_two() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
+  print_doubly_linked_list_forward( list, print_int );
+  printf( "%s \n", "test_remove_element_at_doubly_linked_list_two" );
   remove_element_at_doubly_linked_list( list, 2 );
+  print_doubly_linked_list_forward( list, print_int );
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
@@ -861,6 +870,7 @@ int test_remove_element_at_doubly_linked_list_two() {
 }
 
 int main() {
+  /*
   assert( test_create_doubly_linked_list_element_int() == 0 );
   assert( test_create_doubly_linked_list_element_float() == 0 );
   assert( test_create_doubly_linked_list_element_char() == 0 );
@@ -887,12 +897,15 @@ int main() {
   assert( test_remove_element_none_doubly_linked_list() == 0 );
   assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   assert( test_remove_all_doubly_linked_list() == 0 );
+  */
 
-  /*
+
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
+
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );
+
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
- */
+
 
 
   return 0;

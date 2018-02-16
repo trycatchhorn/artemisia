@@ -289,69 +289,71 @@ void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
   plist->tail = NULL;
 }
 
+void remove_find_better_name( DoublyLinkedList *plist, DoublyLinkedListElement *element ) {
+  DoublyLinkedListElement *head_ref = plist->head;
+  printf( "::10000::\n" );
+  /* base case */
+  if ( NULL == head_ref || NULL == element ) {
+    printf( "::10001::\n" );
+    return;
+  }
+
+  /* If node to be deleted is head node */
+  if ( head_ref == element ) {
+    printf( "::10002::\n" );
+    /*head_ref = element->next;*/
+    plist->head = element->next;
+    printf( "::10003::\n" );
+  }
+
+  /* Change next only if node to be deleted is NOT the last node */
+  if ( NULL != element->next ) {
+    element->next->prev = element->prev;
+  }
+
+  /* Change prev only if node to be deleted is NOT the first node */
+  if ( NULL != element->prev ) {
+    element->prev->next = element->next;
+  }
+
+  /* Finally, free the memory occupied by del*/
+  free( element );
+}
+
 void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) {
+  printf( "::0::\n" );
   int i;
   int min_index = 0;
-  int max_index = get_size_doubly_linked_list( plist ) - 1;
-  DoublyLinkedListElement *prev;
-  DoublyLinkedListElement *next;
+  int max_index = get_size_doubly_linked_list( plist );
 
   /* Store head element - index 0 */
   DoublyLinkedListElement *current = plist->head;
 
+  printf( "::1::\n" );
+
   if ( NULL == plist ) {
-    printf( "::1::\n" );
+    printf( "::2::\n" );
     return;
   }
   if ( index < min_index || index > max_index ) {
-    printf( "::2::\n" );
+    printf( "::3::\n" );
     return;
   }
 
   /* Find previous node of the node to be removed */
-  for( i = 0; i < index; i++ ) {
+  for( i = 0; /* current != NULL && */ i < index; i++ ) {
+    printf( "::4::\n" );
     current = current->next;
   }
 
-  /* If position is more than number of elements */
-  /*
-  if ( NULL == current || NULL == current->next ) {
-    printf( "::3::\n" );
+  if ( NULL == current ) {
+    printf( "::5::\n" );
     return;
   }
-*/
 
-  /* if the size of the list is 1 */
-  if ( 1 == get_size_doubly_linked_list( plist ) ) {
-    printf( "::4::\n" );
-    /* make the 'head' field null */
-    plist->head = NULL;
-  } else {
-    printf( "::5::\n" );
-    next = current->next;
-    prev = current->prev;
-    printf( "::6::\n" );
-
-    printf( "%s%d\n", "element being removed: ", ( * (int *) current->data ) );
-    printf( "%s%d\n", "prev field of element being being removed: ", ( * (int *) prev->data ) );
-    printf( "%s%d\n", "next field of element being being removed: ", ( * (int *) next->data ) );
-
-
-    /* update the pointers to remove the element */
-    prev->next = next;
-    printf( "::7::\n" );
-    /* next->prev = prev; */
-    printf( "::8::\n" );
-  }
-  /* free the data and the element */
-  free( current );
-  /* update size of list */
+  remove_find_better_name( plist, current );
   --plist->size;
 
-  /* Free memory */
-  /*  free( current->next ); */
-  /* Unlink the element from the doubly linked list */
-  /*  current->next = next;*/
 }
 
 void traverse( DoublyLinkedList *plist, element_operation do_func ) {
