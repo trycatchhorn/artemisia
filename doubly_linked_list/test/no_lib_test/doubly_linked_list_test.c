@@ -115,9 +115,15 @@ void debug_helper( DoublyLinkedList *plist, void (* print_func )(void*) ) {
 }
 
 bool is_equal_int( DoublyLinkedListElement *elem1, DoublyLinkedListElement *elem2 ) {
-  const int elem1_data = *( int * ) get_data_doubly_linked_list_element( elem1 );
-  const int elem2_data = *( int * ) get_data_doubly_linked_list_element( elem2 );
-  return ( elem1_data == elem2_data );
+  bool is_equal = false;
+  if ( NULL != elem1 && NULL != elem2 ) {
+    const int elem1_data = *( int * ) get_data_doubly_linked_list_element( elem1 );
+    const int elem2_data = *( int * ) get_data_doubly_linked_list_element( elem2 );
+    is_equal = ( elem1_data == elem2_data );
+  } else {
+    is_equal = ( elem1 == elem2 );
+  }
+  return is_equal;
 }
 
 bool is_equal_char( DoublyLinkedListElement *elem1, DoublyLinkedListElement *elem2 ) {
@@ -801,10 +807,17 @@ int test_remove_all_doubly_linked_list() {
 }
 
 int test_remove_element_at_doubly_linked_list_zero() {
+  int size_before_remove;
+  int size_after_remove;
   int result = 0;
   int i1 = 1;
   int i2 = 2;
   int i3 = 3;
+  DoublyLinkedListElement *new_head;
+  DoublyLinkedListElement *new_head_next;
+  DoublyLinkedListElement *org_tail;
+  DoublyLinkedListElement *org_tail_prev;
+  DoublyLinkedListElement *org_tail_next;
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -812,14 +825,59 @@ int test_remove_element_at_doubly_linked_list_zero() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
-  printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero" );
-  print_doubly_linked_list_forward( list, print_int );
+
+  /* check that we actually removed one element */
+  size_before_remove = get_size_doubly_linked_list( list );
   remove_element_at_doubly_linked_list( list, 0 );
-  print_doubly_linked_list_forward( list, print_int );
+  size_after_remove = get_size_doubly_linked_list( list );
+  if ( size_before_remove != size_after_remove + 1 ) {
+    result = -1;
+  }
+
+  /* check that we removed the correct element - the head element */
+  new_head = get_head_doubly_linked_list( list );
+  if ( get_element_at_doubly_linked_list( list, 0 ) != new_head ) {
+    result = -1;
+  }
+
+  /* check that the next field of the head points to the tail */
+  new_head_next = get_next_doubly_linked_list_element( new_head );
+  org_tail = get_tail_doubly_linked_list( list );
+  if ( ! ( is_equal_int( new_head_next, org_tail ) ) ) {
+    result = -1;
+  }
+
+  /* check that the new head element is the correct element */
+  if ( ! ( is_equal_int( new_head, e2 ) ) ) {
+    result = -1;
+  }
+
+  /* check that the tail element has not been modified */
+  if ( ! ( is_equal_int( org_tail, e3 ) ) ) {
+    result = -1;
+  }
+
+  /* check that the prev field of the tail points to the new head */
+  org_tail_prev = get_previous_doubly_linked_list_element( org_tail );
+  if ( ! ( is_equal_int( org_tail_prev, new_head ) ) ) {
+    result = -1;
+  }
+
+  /* check that the next field of the tail points to null */
+  org_tail_next = get_next_doubly_linked_list_element( org_tail );
+  /*debug_helper( list, print_int );*/
+  if ( ! ( is_equal_int( org_tail_next, NULL ) ) ) {
+    result = -1;
+  }
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero -> FAIL" );
+  }
   return result;
 }
 
@@ -902,9 +960,11 @@ int main() {
 
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
 
+  /*
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );
 
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
+  */
 
 
 
