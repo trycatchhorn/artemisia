@@ -618,7 +618,6 @@ int test_remove_element_middle_doubly_linked_list() {
   int i3 = 16;
   int i4 = 12;
   int i5 = 14;
-  DoublyLinkedListElement *new_head;
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -631,7 +630,6 @@ int test_remove_element_middle_doubly_linked_list() {
   append_doubly_linked_list( list, e4, sizeof( int ) );
   append_doubly_linked_list( list, e5, sizeof( int ) );
   remove_element_doubly_linked_list( list, e3, is_equal_int );
-  new_head = get_head_doubly_linked_list( list );
   if ( get_size_doubly_linked_list( list ) != 4 ) {
     result = -1;
   }

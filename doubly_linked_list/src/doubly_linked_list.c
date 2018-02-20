@@ -322,8 +322,12 @@ bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element )
     element->prev->next = element->next;
   }
 
-  /* Finally, free the memory occupied by element */
+  /* Free the memory occupied by element data */
+  free( element->data );
+
+  /* Free the element */
   free( element );
+
   result = true;
   return result;
 }
