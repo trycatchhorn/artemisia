@@ -885,8 +885,6 @@ int test_remove_element_at_doubly_linked_list_zero() {
   }
 
   /* clean up */
-  print_element_int( e1 );
-  /*  print_element_int( e2 ); */
   free( e2 );
   free( e3 );
   free( list );
@@ -894,10 +892,17 @@ int test_remove_element_at_doubly_linked_list_zero() {
 }
 
 int test_remove_element_at_doubly_linked_list_one() {
+  int size_before_remove;
+  int size_after_remove;
   int result = 0;
   int i1 = 1;
   int i2 = 2;
   int i3 = 3;
+  DoublyLinkedListElement *head_org;
+  DoublyLinkedListElement *head_next;
+  DoublyLinkedListElement *tail_org;
+  DoublyLinkedListElement *tail_org_prev;
+  DoublyLinkedListElement *tail_org_next;
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -905,14 +910,74 @@ int test_remove_element_at_doubly_linked_list_one() {
   append_doubly_linked_list( list, e1, sizeof( int ) );
   append_doubly_linked_list( list, e2, sizeof( int ) );
   append_doubly_linked_list( list, e3, sizeof( int ) );
-  print_doubly_linked_list_forward( list, print_int );
-  printf( "%s \n", "test_remove_element_at_doubly_linked_list_one" );
+
+  /* get size of list before remove */
+  size_before_remove = get_size_doubly_linked_list( list );
+
+  /* remove element at index 0 */
   remove_element_at_doubly_linked_list( list, 1 );
-  print_doubly_linked_list_forward( list, print_int );
+
+  /* get size of list after remove */
+  size_after_remove = get_size_doubly_linked_list( list );
+
+  /* check that we actually removed one element */
+  if ( size_before_remove != size_after_remove + 1 ) {
+    result = -1;
+  }
+
+  /* check that we removed the correct element - the middle element */
+  head_org = get_head_doubly_linked_list( list );
+  if ( get_element_at_doubly_linked_list( list, 0 ) != head_org ) {
+    result = -1;
+  }
+  tail_org = get_tail_doubly_linked_list( list );
+  if ( get_element_at_doubly_linked_list( list, 1 ) != tail_org ) {
+    result = -1;
+  }
+
+  /* check that the next field of the head points to the tail */
+  head_next = get_next_doubly_linked_list_element( head_org );
+  if ( ! ( is_equal_int( head_next, tail_org ) ) ) {
+    result = -1;
+  }
+
+  /* check that the head element is the correct element */
+  if ( ! ( is_equal_int( head_org, e1 ) ) ) {
+    result = -1;
+  }
+
+  /* check that the tail element has not been modified */
+  if ( ! ( is_equal_int( tail_org, e3 ) ) ) {
+    result = -1;
+  }
+
+  /* check that the prev field of the tail points to the head */
+  tail_org_prev = get_previous_doubly_linked_list_element( tail_org );
+  if ( ! ( is_equal_int( tail_org_prev, head_org ) ) ) {
+    result = -1;
+  }
+
+  /* check that the next field of the tail points to null */
+  tail_org_next = get_next_doubly_linked_list_element( tail_org );
+  if ( ! ( is_equal_int( tail_org_next, NULL ) ) ) {
+    result = -1;
+  }
+
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
+
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_at_doubly_linked_list_one -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero -> FAIL" );
+  }
+
+  /* clean up */
+  free( e1 );
+  free( e3 );
+  free( list );
   return result;
 }
 
@@ -972,9 +1037,9 @@ int main() {
 
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
 
-  /*
-  assert( test_remove_element_at_doubly_linked_list_one() == 0 );
 
+  assert( test_remove_element_at_doubly_linked_list_one() == 0 );
+  /*
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
   */
 
