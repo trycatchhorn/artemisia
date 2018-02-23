@@ -302,6 +302,7 @@ void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element ) {
   bool result = false;
   DoublyLinkedListElement *head_ref = plist->head;
+
   /* Base case - we do nothing */
   if ( NULL == head_ref || NULL == element ) {
     result = false;;
@@ -324,9 +325,11 @@ bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element )
 
   /* Free the memory occupied by element data */
   free( element->data );
+  element->data = NULL;
 
   /* Free the element */
   free( element );
+  element = NULL;
 
   result = true;
   return result;
@@ -361,6 +364,7 @@ void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) 
 
   was_removed = remove_element( plist, current );
   if ( was_removed ) {
+    printf( "%s\n", "::WAS_REMOVED::" );
     --plist->size;
   }
 }
