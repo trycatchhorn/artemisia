@@ -302,6 +302,7 @@ void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element ) {
   bool result = false;
   DoublyLinkedListElement *head_ref = plist->head;
+  DoublyLinkedListElement *tail_ref = plist->tail;
 
   /* Base case - we do nothing */
   if ( NULL == head_ref || NULL == element ) {
@@ -311,6 +312,11 @@ bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element )
   /* If element to be removed is the head element */
   if ( head_ref == element ) {
     plist->head = element->next;
+  }
+
+  /* If element to be removed is the tail element */
+  if ( tail_ref == element ) {
+    plist->tail = element->prev;
   }
 
   /* Change next field only if the element to be removed is NOT the last element */
@@ -354,7 +360,7 @@ void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) 
   }
 
   /* Find previous node of the node to be removed */
-  for( i = 0; /* current != NULL && */ i < index; i++ ) {
+  for( i = 0; current != NULL && i < index; i++ ) {
     current = current->next;
   }
 
@@ -364,7 +370,6 @@ void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index ) 
 
   was_removed = remove_element( plist, current );
   if ( was_removed ) {
-    printf( "%s\n", "::WAS_REMOVED::" );
     --plist->size;
   }
 }
