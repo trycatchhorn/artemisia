@@ -127,9 +127,15 @@ bool is_equal_int( DoublyLinkedListElement *elem1, DoublyLinkedListElement *elem
 }
 
 bool is_equal_char( DoublyLinkedListElement *elem1, DoublyLinkedListElement *elem2 ) {
-  const char elem1_data = *( char * ) get_data_doubly_linked_list_element( elem1 );
-  const char elem2_data = *( char * ) get_data_doubly_linked_list_element( elem2 );
-  return ( elem1_data == elem2_data );
+  bool is_equal = false;
+  if ( NULL != elem1 && NULL != elem2 ) {
+    const char elem1_data = *( char * ) get_data_doubly_linked_list_element( elem1 );
+    const char elem2_data = *( char * ) get_data_doubly_linked_list_element( elem2 );
+    is_equal = ( elem1_data == elem2_data );
+  } else {
+    is_equal = ( elem1 == elem2 );
+  }
+  return is_equal;
 }
 
 /* Begin test of doubly linked list */
@@ -1066,16 +1072,13 @@ int test_remove_element_at_doubly_linked_list_two() {
 }
 
 int main() {
-  /*
   assert( test_create_doubly_linked_list_element_int() == 0 );
   assert( test_create_doubly_linked_list_element_float() == 0 );
   assert( test_create_doubly_linked_list_element_char() == 0 );
-
   assert( test_create_doubly_linked_list_empty() == 0 );
   assert( test_create_doubly_linked_list_int() == 0 );
   assert( test_create_doubly_linked_list_float() == 0 );
   assert( test_create_doubly_linked_list_char() == 0 );
-
   assert( test_get_head_doubly_linked_list() == 0 );
   assert( test_get_tail_doubly_linked_list() == 0 );
   assert( test_get_element_at_doubly_linked_list() == 0 );
@@ -1084,25 +1087,14 @@ int main() {
   assert( test_shallow_copy_doubly_linked_list() == 0 );
   assert( test_prepend_doubly_linked_list() == 0 );
   assert( test_append_doubly_linked_list() == 0 );
-
   assert( test_remove_element_head_doubly_linked_list() == 0 );
   assert( test_remove_element_middle_doubly_linked_list() == 0 );
   assert( test_remove_element_tail_doubly_linked_list() == 0 );
-
-
   assert( test_remove_element_none_doubly_linked_list() == 0 );
   assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   assert( test_remove_all_doubly_linked_list() == 0 );
-  */
-
-
-
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
-
-
-
-
   return 0;
 }

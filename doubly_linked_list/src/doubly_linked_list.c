@@ -15,6 +15,8 @@ struct doubly_linked_list {
   size_t size;
 };
 
+/* Operations on elements/nodes in doubly linked list */
+
 DoublyLinkedListElement* create_doubly_linked_list_element( void *data, size_t data_size ) {
   size_t off_set;
   DoublyLinkedListElement *new_element;
@@ -61,6 +63,8 @@ DoublyLinkedListElement* get_next_doubly_linked_list_element( DoublyLinkedListEl
   return pelement->next;
 }
 
+/* Operations on doubly linked list */
+
 DoublyLinkedList* create_doubly_linked_list() {
   DoublyLinkedList* list;
   list = malloc( sizeof( DoublyLinkedListElement ) );
@@ -92,14 +96,23 @@ bool is_equal_doubly_linked_list( DoublyLinkedList *plist1, DoublyLinkedList *pl
 }
 
 DoublyLinkedListElement* get_head_doubly_linked_list( DoublyLinkedList *plist ) {
+  if ( plist == NULL ) {
+    return NULL;
+  }
   return plist->head;
 }
 
 DoublyLinkedListElement* get_tail_doubly_linked_list( DoublyLinkedList *plist ) {
+  if ( plist == NULL ) {
+    return NULL;
+  }
   return plist->tail;
 }
 
 size_t get_size_doubly_linked_list( DoublyLinkedList *plist ) {
+  if ( plist == NULL ) {
+    return 0;
+  }
   return plist->size;
 }
 
