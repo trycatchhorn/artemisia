@@ -94,6 +94,10 @@ debug:	doubly_linked_list_testd.o
 release: doubly_linked_list_test.o
 	$(CC) $(O_FILES_RELEASE) -o $(RELEASE_DIR)/$(PROGRAM_RELEASE)
 
+run_valgrind: debug
+	valgrind --leak-check=yes --show-reachable=yes --tool=memcheck ./$(DEBUG_DIR)/$(PROGRAM_DEBUG)
+
+
 clean:
 	@rm -f $(H_BACKUP_FILES)
 	@rm -f $(C_BACKUP_FILES)
