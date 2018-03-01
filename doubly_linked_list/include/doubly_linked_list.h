@@ -43,7 +43,7 @@ void print_doubly_linked_list_backward( DoublyLinkedList *plist, void ( * print_
 
 DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size_t data_size );
 
-int prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
+DoublyLinkedListElement* prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
 
 int append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
 

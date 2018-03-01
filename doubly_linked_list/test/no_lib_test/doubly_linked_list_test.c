@@ -230,36 +230,52 @@ int test_create_doubly_linked_list_int() {
   int i1 = 1;
   int i2 = 2;
   int i3 = 3;
+  DoublyLinkedListElement *r1;
+  DoublyLinkedListElement *r2;
+  DoublyLinkedListElement *r3;
+
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
-  void *elem_data = get_data_doubly_linked_list_element( e1 );
   DoublyLinkedList *list = create_doubly_linked_list();
-  prepend_doubly_linked_list( list, e3, sizeof( int ) );
-  prepend_doubly_linked_list( list, e2, sizeof( int ) );
-  prepend_doubly_linked_list( list, e1, sizeof( int ) );
+
+  r1 = prepend_doubly_linked_list( list, e3, sizeof( int ) );
+  r2 = prepend_doubly_linked_list( list, e2, sizeof( int ) );
+  r3 = prepend_doubly_linked_list( list, e1, sizeof( int ) );
+
   if ( get_size_doubly_linked_list( list ) != 3 ) {
     result = -1;
   }
+
   #ifdef DEBUG
     print_doubly_linked_list_forward( list, print_int );
     debug_helper( list, print_int );
   #endif
+
   if ( result == 0 ) {
     printf( "%s \n", "test_create_doubly_linked_list_int -> OK" );
   } else {
     printf( "%s \n", "test_create_doubly_linked_list_int -> FAIL" );
   }
-  /*  free( get_data_doubly_linked_list_element( e1 ) ); */
-  free( elem_data );
+
+  free( get_data_doubly_linked_list_element( r1 ) );
+  free( get_data_doubly_linked_list_element( r2 ) );
+  free( get_data_doubly_linked_list_element( r3 ) );
+  free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
+  free( r1 );
+  free( r2 );
+  free( r3 );
   free( e1 );
   free( e2 );
   free( e3 );
   free( list );
   return result;
 }
+
+
+
 
 int test_create_doubly_linked_list_float() {
   int result = 0;
@@ -1087,9 +1103,8 @@ int main() {
   assert( test_create_doubly_linked_list_element_float() == 0 );
   assert( test_create_doubly_linked_list_element_char() == 0 );
   assert( test_create_doubly_linked_list_empty() == 0 );
-
-
   assert( test_create_doubly_linked_list_int() == 0 );
+
   /*
   assert( test_create_doubly_linked_list_float() == 0 );
   assert( test_create_doubly_linked_list_char() == 0 );

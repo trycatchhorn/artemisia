@@ -190,12 +190,12 @@ DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size
   return list;
 }
 
-int prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size ) {
+DoublyLinkedListElement* prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size ) {
   size_t off_set;
   /* 1. allocate new element */
   DoublyLinkedListElement *new_element = malloc( sizeof ( DoublyLinkedListElement ) );
   if ( NULL == new_element || NULL == plist || NULL == pelement ) {
-    return -1;
+    return NULL;
   }
   /* 2. allocate data for new element */
   new_element->data = malloc( sizeof( data_size ) );
@@ -225,7 +225,7 @@ int prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement
   }
   /* 13. update size of list */
   ++plist->size;
-  return 0;
+  return new_element;
 }
 
 int append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size ) {
