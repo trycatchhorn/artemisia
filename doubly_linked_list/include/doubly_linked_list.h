@@ -45,8 +45,7 @@ DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size
 
 DoublyLinkedListElement* prepend_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
 
-int append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
-
+DoublyLinkedListElement* append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
 
 void remove_element_doubly_linked_list( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func );
 
