@@ -95,7 +95,7 @@ release: doubly_linked_list_test.o
 	$(CC) $(O_FILES_RELEASE) -o $(RELEASE_DIR)/$(PROGRAM_RELEASE)
 
 run_valgrind: debug
-	valgrind --leak-check=yes --show-reachable=yes --tool=memcheck ./$(DEBUG_DIR)/$(PROGRAM_DEBUG)
+	valgrind -v --leak-check=yes --show-reachable=yes --tool=memcheck ./$(DEBUG_DIR)/$(PROGRAM_DEBUG)
 
 
 clean:
