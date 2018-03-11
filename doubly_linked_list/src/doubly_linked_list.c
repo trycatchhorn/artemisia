@@ -270,6 +270,7 @@ DoublyLinkedListElement* append_doubly_linked_list( DoublyLinkedList *plist, Dou
 }
 
 void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, is_equal_doubly_linked_list_elements equal_func ) {
+  DoublyLinkedListElement *tmp;
   DoublyLinkedListElement *previous = NULL;
   DoublyLinkedListElement *current = plist->head;
 
@@ -289,7 +290,9 @@ void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedLis
       }
       /* update 'size' field of doubly linked list */
       --plist->size;
-      free( current );
+      tmp = current;
+      free( tmp->data );
+      free( tmp );
       return;
     }
     previous = current;
