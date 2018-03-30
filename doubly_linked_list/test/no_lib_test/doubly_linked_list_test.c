@@ -773,6 +773,8 @@ int test_append_doubly_linked_list() {
 }
 
 int test_remove_element_head_doubly_linked_list() {
+  int size_before_remove;
+  int size_after_remove;
   int result = 0;
   int i1 = 21;
   int i2 = 32;
@@ -799,9 +801,24 @@ int test_remove_element_head_doubly_linked_list() {
   r4 = append_doubly_linked_list( list, e4, sizeof( int ) );
   r5 = append_doubly_linked_list( list, e5, sizeof( int ) );
 
+  /* get size of list before remove */
+  size_before_remove = get_size_doubly_linked_list( list );
+
+  /* remove element (head) from the linked list */
   remove_element_doubly_linked_list( list, e1, is_equal_int );
+
+  /* get size of list after remove */
+  size_after_remove = get_size_doubly_linked_list( list );
+
+  /* check that we actually removed one element */
+  if ( size_before_remove != size_after_remove + 1 ) {
+    result = -1;
+  }
+
+  /* get the new head element */
   new_head = get_head_doubly_linked_list( list );
 
+  /* check that the new head element is correct */
   if ( !is_equal_int( new_head, e2 ) ) {
     free( get_data_doubly_linked_list_element( r1 ) );
     free( get_data_doubly_linked_list_element( e1 ) );
@@ -1042,7 +1059,6 @@ int test_remove_all_doubly_linked_list() {
 }
 
 int test_remove_element_at_doubly_linked_list_zero() {
-  printf( "%s \n", "::FOOBAR::" );
   int size_before_remove;
   int size_after_remove;
   int result = 0;
@@ -1072,7 +1088,6 @@ int test_remove_element_at_doubly_linked_list_zero() {
 
   /* remove element at index 0 */
   remove_element_at_doubly_linked_list( list, 0 );
-  printf( "%s \n", "::w1::" );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
