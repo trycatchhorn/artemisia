@@ -51,7 +51,7 @@ void remove_element_doubly_linked_list( DoublyLinkedList* plist, DoublyLinkedLis
 
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element );
 
-void remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index );
+bool remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index );
 
 void remove_all_doubly_linked_list( DoublyLinkedList* plist );
 
