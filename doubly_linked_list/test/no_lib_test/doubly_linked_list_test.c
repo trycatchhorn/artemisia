@@ -846,6 +846,32 @@ int test_remove_element_none_doubly_linked_list() {
   return result;
 }
 
+int test_remove_element_from_empty_doubly_linked_list() {
+  int result = 0;
+  int i1 = 21;
+  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
+  DoublyLinkedList *list = create_doubly_linked_list();
+  remove_element_doubly_linked_list( list, e1, is_equal_int );
+  if ( get_size_doubly_linked_list( list ) != 0 ) {
+    result = -1;
+  }
+  if ( NULL != get_head_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( NULL != get_tail_doubly_linked_list( list ) ) {
+    result = -1;
+  }
+  if ( result == 0 ) {
+    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> OK" );
+  } else {
+    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> FAIL" );
+  }
+  free( get_data_doubly_linked_list_element( e1 ) );
+  free( e1 );
+  free( list );
+  return result;
+}
+
 int test_remove_element_head_doubly_linked_list() {
   int size_before_remove;
   int size_after_remove;
@@ -1022,31 +1048,6 @@ int test_remove_element_tail_doubly_linked_list() {
   } else {
     printf( "%s \n", "test_remove_element_tail_doubly_linked_list -> FAIL" );
   }
-  return result;
-}
-
-int test_remove_element_from_empty_doubly_linked_list() {
-  int result = 0;
-  int i1 = 21;
-  DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
-  DoublyLinkedList *list = create_doubly_linked_list();
-  remove_element_doubly_linked_list( list, e1, is_equal_int );
-  if ( get_size_doubly_linked_list( list ) != 0 ) {
-    result = -1;
-  }
-  if ( NULL != get_head_doubly_linked_list( list ) ) {
-    result = -1;
-  }
-  if ( NULL != get_tail_doubly_linked_list( list ) ) {
-    result = -1;
-  }
-  if ( result == 0 ) {
-    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> OK" );
-  } else {
-    printf( "%s \n", "test_remove_element_from_empty_doubly_linked_list -> FAIL" );
-  }
-  free( e1 );
-  free( list );
   return result;
 }
 
@@ -1392,11 +1393,12 @@ int main() {
   */
 
   assert( test_remove_element_none_doubly_linked_list() == 0 );
+  assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   /* assert( test_remove_element_head_doubly_linked_list() == 0 ); */
   /* assert( test_remove_element_middle_doubly_linked_list() == 0 ); */
   /* assert( test_remove_element_tail_doubly_linked_list() == 0 ); */
 
-  /* assert( test_remove_element_from_empty_doubly_linked_list() == 0 ); */
+
   /* assert( test_remove_all_doubly_linked_list() == 0 ); */
   /* assert( test_remove_element_at_doubly_linked_list_zero() == 0 ); */
   /* assert( test_remove_element_at_doubly_linked_list_one() == 0 ); */
