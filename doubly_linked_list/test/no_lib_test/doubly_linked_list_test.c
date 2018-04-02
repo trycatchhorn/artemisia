@@ -1028,8 +1028,8 @@ int test_remove_element_middle_doubly_linked_list() {
 
   free( r1 );
   free( r2 );
-  free( e4 );
-  free( e5 );
+  free( r4 );
+  free( r5 );
   free( e1 );
   free( e2 );
   free( e4 );
