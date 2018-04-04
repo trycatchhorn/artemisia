@@ -188,8 +188,6 @@ DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size
   while ( current != NULL ) {
     temp = append_doubly_linked_list( list, current, data_size );
     current = current->next;
-    free( temp->data );
-    free( temp );
   }
   return list;
 }

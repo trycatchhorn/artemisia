@@ -622,10 +622,6 @@ int test_get_size_doubly_linked_list() {
   return result;
 }
 
-
-
-
-
 int test_shallow_copy_doubly_linked_list() {
   int result = 0;
   int i1 = 1;
@@ -1501,11 +1497,7 @@ int main() {
   assert( test_get_element_at_doubly_linked_list() == 0 );
   assert( test_get_size_doubly_linked_list() == 0 );
   assert( test_is_equal_doubly_linked_list() == 0 );
-
-  /*
-  assert( test_shallow_copy_doubly_linked_list() == 0 ); LEAKS
-  */
-
+  assert( test_shallow_copy_doubly_linked_list() == 0 );
   assert( test_prepend_doubly_linked_list() == 0 );
   assert( test_append_doubly_linked_list() == 0 );
   assert( test_remove_element_none_doubly_linked_list() == 0 );
