@@ -182,11 +182,10 @@ void print_doubly_linked_list_backward( DoublyLinkedList *plist, void (* print_e
 
 DoublyLinkedList* shallow_copy_doubly_linked_list( DoublyLinkedList *plist, size_t data_size ) {
   DoublyLinkedListElement *current;
-  DoublyLinkedListElement *temp;
   DoublyLinkedList *list = create_doubly_linked_list();
   current = plist->head;
   while ( current != NULL ) {
-    temp = append_doubly_linked_list( list, current, data_size );
+    append_doubly_linked_list( list, current, data_size );
     current = current->next;
   }
   return list;
