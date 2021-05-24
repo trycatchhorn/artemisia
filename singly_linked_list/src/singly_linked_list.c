@@ -164,6 +164,7 @@ SinglyLinkedListElement* append_singly_linked_list( SinglyLinkedList* plist, Sin
   return new_node;
 }
 
+/*
 void remove_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
   SinglyLinkedListElement* previous = NULL;
   SinglyLinkedListElement* current = plist->head;
@@ -186,84 +187,34 @@ void remove_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement
     current = current->next;
   }
 }
-
-void delete_node( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
-  /* 
-     see: for fixing mem leaks in linked list:
-
-     https://github.com/vivekbhadra/misc/blob/master/linked_list_no_mleak.c
-     https://techfortalk.co.uk/2018/01/30/how-to-detect-memory-leak-in-c-program-using-valgrind/
-
-   */
-  int a;
-  int b;
-  int c;
-  SinglyLinkedListElement* tmp;
-  SinglyLinkedListElement* prev  = NULL;
-  SinglyLinkedListElement* phead = plist->head;
-  tmp = phead;
-  printf( "::0::\n" );
-  printf( "::1::\n" );
-  a = 100;
-  printf( "a: %d\n", a );
-  b = phead->data;
-  printf( "b: %d\n", b );
-  c = pelement->data;
-  printf( "c: %d\n", c );
-
-  if ( phead != NULL && phead->data == pelement->data ) {
-    phead = tmp->next;
-    plist->head = phead;
-    free( tmp );
-    return;
-  }
-  
-  while ( ( phead ) && ( phead->data != pelement->data ) ) {
-    printf( "::2::\n" );
-    prev = phead;
-    printf( "::3::\n" );
-    phead = phead->next;
-    printf( "::4::\n" );
-  }
-  printf( "::5::\n" );
-  prev->next = phead->next;
-  printf( "::6::\n" );
-  free( phead );
-  printf( "::7::\n" );
-  return;
-}
-
-/*
-void deleteNode(struct Node** head_ref, int key)
-{
-    // Store head node
-    struct Node *temp = *head_ref, *prev;
- 
-    // If head node itself holds the key to be deleted
-    if (temp != NULL && temp->data == key) {
-        *head_ref = temp->next; // Changed head
-        free(temp); // free old head
-        return;
-    }
- 
-    // Search for the key to be deleted, keep track of the
-    // previous node as we need to change 'prev->next'
-    while (temp != NULL && temp->data != key) {
-        prev = temp;
-        temp = temp->next;
-    }
- 
-    // If key was not present in linked list
-    if (temp == NULL)
-        return;
- 
-    // Unlink the node from linked list
-    prev->next = temp->next;
-    
-    free(temp); // Free memory
-}
 */
 
+void remove_element_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
+  SinglyLinkedListElement *temp = plist->head;
+  SinglyLinkedListElement *prev = temp;
+  
+  if ( temp != NULL && temp->data == pelement->data ) {
+    /* deleting the head node */
+    plist->head = temp->next;
+    free( temp );
+  }
+  else {
+    while ( temp != NULL ) {
+      if ( temp->data == pelement->data ) {
+	if ( temp == plist->tail ) {
+	  plist->tail = prev;
+	}
+	prev->next = temp->next;
+	free( temp );
+	temp = NULL;
+      }
+      else {
+	prev = temp;
+	temp = temp->next;
+      }
+    }
+  }
+}
 
 void remove_all_singly_linked_list( SinglyLinkedList* plist ) {
   SinglyLinkedListElement* head = plist->head;

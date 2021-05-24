@@ -99,12 +99,10 @@ SinglyLinkedListElement* prepend_singly_linked_list( SinglyLinkedList* plist, Si
  */
 SinglyLinkedListElement* append_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
 
-/** remove_singly_linked_list() - removes, if present, the specified element
+/** remove_element_singly_linked_list() - removes, if present, the specified element
  *  from the specified singly linked list.
  */
-void remove_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
-
-void delete_node( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
+void remove_element_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
 
 /** remove_all_singly_linked_list() - removes all elements contained in
  *  the specified singly linked list, making the list empty after the

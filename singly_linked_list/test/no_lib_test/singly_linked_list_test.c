@@ -228,46 +228,8 @@ int test_remove_head_singly_linked_list() {
   SinglyLinkedListElement* r3 = append_singly_linked_list( list, e3 );
   SinglyLinkedListElement* r4 = append_singly_linked_list( list, e4 );
   SinglyLinkedListElement* r5 = append_singly_linked_list( list, e5 );
-  remove_singly_linked_list( list, e1 );
+  remove_element_singly_linked_list( list, e1 );
   new_head = get_head_singly_linked_list( list );
-  if ( get_data_singly_linked_list_element( new_head ) != get_data_singly_linked_list_element( e2 ) ) {
-    result = -1;
-  }
-  if ( -1 == result ) {
-    free( e1 );
-    free( r1 );
-  }
-  free( e2 );
-  free( e3 );
-  free( e4 );
-  free( e5 );
-  free( r2 );
-  free( r3 );
-  free( r4 );
-  free( r5 );
-  free( list );
-  return result;
-}
-
-
-int test_delete_head_singly_linked_list() {
-  int result = 0;
-  SinglyLinkedListElement* new_head;
-  SinglyLinkedListElement* e1 = create_singly_linked_list_element( 21 );
-  SinglyLinkedListElement* e2 = create_singly_linked_list_element( 32 );
-  SinglyLinkedListElement* e3 = create_singly_linked_list_element( 16 );
-  SinglyLinkedListElement* e4 = create_singly_linked_list_element( 12 );
-  SinglyLinkedListElement* e5 = create_singly_linked_list_element( 14 );
-  SinglyLinkedList* list = create_singly_linked_list();
-  SinglyLinkedListElement* r1 = append_singly_linked_list( list, e1 );
-  SinglyLinkedListElement* r2 = append_singly_linked_list( list, e2 );
-  SinglyLinkedListElement* r3 = append_singly_linked_list( list, e3 );
-  SinglyLinkedListElement* r4 = append_singly_linked_list( list, e4 );
-  SinglyLinkedListElement* r5 = append_singly_linked_list( list, e5 );
-  delete_node( list, e1 );
-
-  new_head = get_head_singly_linked_list( list );
-  printf( "new_head: %d\n", get_data_singly_linked_list_element( new_head ) );
   if ( get_data_singly_linked_list_element( new_head ) != get_data_singly_linked_list_element( e2 ) ) {
     result = -1;
   }
@@ -284,10 +246,8 @@ int test_delete_head_singly_linked_list() {
   free( r4 );
   free( r5 );
   free( list );
-
   return result;
 }
-
 
 /**
  *
@@ -317,15 +277,16 @@ int test_remove_middle_singly_linked_list() {
   SinglyLinkedListElement* r3 = append_singly_linked_list( list, e3 );
   SinglyLinkedListElement* r4 = append_singly_linked_list( list, e4 );
   SinglyLinkedListElement* r5 = append_singly_linked_list( list, e5 );
-  remove_singly_linked_list( list, e3 );
+  remove_element_singly_linked_list( list, e3 );
   if ( get_size_singly_linked_list( list ) != 4 ) {
     result = -1;
   }
   if ( -1 == result ) {
-    free( e3 );
+    free( r3 );
   }
   free( e1 );
   free( e2 );
+  free( e3 );
   free( e4 );
   free( e5 );
   free( r1 );
@@ -360,23 +321,28 @@ int test_remove_tail_singly_linked_list() {
   SinglyLinkedListElement* e4 = create_singly_linked_list_element( 12 );
   SinglyLinkedListElement* e5 = create_singly_linked_list_element( 14 );
   SinglyLinkedList* list = create_singly_linked_list();
-  append_singly_linked_list( list, e1 );
-  append_singly_linked_list( list, e2 );
-  append_singly_linked_list( list, e3 );
-  append_singly_linked_list( list, e4 );
-  append_singly_linked_list( list, e5 );
-  remove_singly_linked_list( list, e5 );
+  SinglyLinkedListElement* r1 = append_singly_linked_list( list, e1 );
+  SinglyLinkedListElement* r2 = append_singly_linked_list( list, e2 );
+  SinglyLinkedListElement* r3 = append_singly_linked_list( list, e3 );
+  SinglyLinkedListElement* r4 = append_singly_linked_list( list, e4 );
+  SinglyLinkedListElement* r5 = append_singly_linked_list( list, e5 );
+  remove_element_singly_linked_list( list, e5 );
   new_tail = get_tail_singly_linked_list( list );
   if ( get_data_singly_linked_list_element( new_tail ) != get_data_singly_linked_list_element( e4 ) ) {
     result = -1;
   }
   if ( -1 == result ) {
-    free( e5 );
+    free( r5 );
   }
   free( e1 );
   free( e2 );
   free( e3 );
   free( e4 );
+  free( e5 );
+  free( r1 );
+  free( r2 );
+  free( r3 );
+  free( r4 );
   free( list );
   return result;
 }
@@ -405,12 +371,12 @@ int test_remove_none_singly_linked_list() {
   SinglyLinkedListElement* e5 = create_singly_linked_list_element( 14 );
   SinglyLinkedListElement* e6 = create_singly_linked_list_element( 17 );
   SinglyLinkedList* list = create_singly_linked_list();
-  append_singly_linked_list( list, e1 );
-  append_singly_linked_list( list, e2 );
-  append_singly_linked_list( list, e3 );
-  append_singly_linked_list( list, e4 );
-  append_singly_linked_list( list, e5 );
-  remove_singly_linked_list( list, e6 );
+  SinglyLinkedListElement* r1 = append_singly_linked_list( list, e1 );
+  SinglyLinkedListElement* r2 = append_singly_linked_list( list, e2 );
+  SinglyLinkedListElement* r3 = append_singly_linked_list( list, e3 );
+  SinglyLinkedListElement* r4 = append_singly_linked_list( list, e4 );
+  SinglyLinkedListElement* r5 = append_singly_linked_list( list, e5 );
+  remove_element_singly_linked_list( list, e6 );
   if ( get_size_singly_linked_list( list ) != 5 ) {
     result = -1;
   }
@@ -420,6 +386,11 @@ int test_remove_none_singly_linked_list() {
   free( e4 );
   free( e5 );
   free( e6 );
+  free( r1 );
+  free( r2 );
+  free( r3 );
+  free( r4 );
+  free( r5 );
   free( list );
   return result;
 }
@@ -440,7 +411,7 @@ int test_remove_from_empty_singly_linked_list() {
   int result = 0;
   SinglyLinkedListElement* e1 = create_singly_linked_list_element( 21 );
   SinglyLinkedList* list = create_singly_linked_list();
-  remove_singly_linked_list( list, e1 );
+  remove_element_singly_linked_list( list, e1 );
   if ( get_size_singly_linked_list( list ) != 0 ) {
     result = -1;
   }
@@ -496,12 +467,12 @@ int main() {
   /* assert( test_shallow_copy_singly_linked_list() == 0 ); */
   assert( test_prepend_singly_linked_list() == 0 );
   assert( test_append_singly_linked_list() == 0 );
-  /* assert( test_remove_head_singly_linked_list() == 0 ); */
-  assert( test_delete_head_singly_linked_list() ==  0 );
+  assert( test_remove_head_singly_linked_list() ==  0 );
   assert( test_remove_middle_singly_linked_list() == 0 );
-  /* assert( test_remove_tail_singly_linked_list() == 0 ); */
-  /* assert( test_remove_none_singly_linked_list() == 0 ); */
-  /* assert( test_remove_from_empty_singly_linked_list() == 0 ); */
+  assert( test_remove_tail_singly_linked_list() == 0 );
+  assert( test_remove_none_singly_linked_list() == 0 );
+  assert( test_remove_from_empty_singly_linked_list() == 0 );
+  
   /* assert( test_remove_all_singly_linked_list() == 0 ); */
   return 0;
 }
