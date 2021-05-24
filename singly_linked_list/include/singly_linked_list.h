@@ -91,18 +91,20 @@ SinglyLinkedList* shallow_copy_singly_linked_list( SinglyLinkedList* plist );
  *  specified singly linked list. The element is inserted in front of the
  *  singly_linked_list.
  */
-int prepend_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
+SinglyLinkedListElement* prepend_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
 
 /** append_singly_linked_list() - inserts the specified element into the
  *  specified singly linked list. The element is inserted in the back of
  *  the singly_linked_list.
  */
-int append_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
+SinglyLinkedListElement* append_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
 
 /** remove_singly_linked_list() - removes, if present, the specified element
  *  from the specified singly linked list.
  */
 void remove_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
+
+void delete_node( SinglyLinkedList* plist, SinglyLinkedListElement* pelement );
 
 /** remove_all_singly_linked_list() - removes all elements contained in
  *  the specified singly linked list, making the list empty after the
