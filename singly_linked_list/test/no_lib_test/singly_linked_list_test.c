@@ -150,6 +150,7 @@ int test_shallow_copy_singly_linked_list() {
   free( r1 );
   free( r2 );
   free( r3 );
+
   free( list );
   free( list_copy );
   return result;
@@ -464,15 +465,14 @@ int main() {
   assert( test_get_tail_singly_linked_list() == 0 );
   assert( test_get_element_at_singly_linked_list() == 0 );
   assert( test_is_equal_singly_linked_list() == 0 );
-  /* assert( test_shallow_copy_singly_linked_list() == 0 ); */
+  assert( test_shallow_copy_singly_linked_list() == 0 );
   assert( test_prepend_singly_linked_list() == 0 );
   assert( test_append_singly_linked_list() == 0 );
   assert( test_remove_head_singly_linked_list() ==  0 );
   assert( test_remove_middle_singly_linked_list() == 0 );
   assert( test_remove_tail_singly_linked_list() == 0 );
   assert( test_remove_none_singly_linked_list() == 0 );
-  assert( test_remove_from_empty_singly_linked_list() == 0 );
-  
-  /* assert( test_remove_all_singly_linked_list() == 0 ); */
+  assert( test_remove_from_empty_singly_linked_list() == 0 ); 
+  assert( test_remove_all_singly_linked_list() == 0 );
   return 0;
 }

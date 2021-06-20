@@ -123,14 +123,36 @@ int is_equal_singly_linked_list( SinglyLinkedList* plist1, SinglyLinkedList* pli
 }
 
 SinglyLinkedList* shallow_copy_singly_linked_list( SinglyLinkedList* plist ) {
-  SinglyLinkedListElement* current;
-  SinglyLinkedList* list = create_singly_linked_list();
-  current = plist->head;
-  while ( current != NULL ) {
-    append_singly_linked_list( list, current );
-    current = current->next;
+  SinglyLinkedListElement* prev = NULL;
+  SinglyLinkedListElement* copy = NULL;
+  SinglyLinkedListElement* head = NULL;
+  SinglyLinkedList* list_copy = create_singly_linked_list();
+  if ( !list_copy ) {
+    return NULL;
   }
-  return list;
+  
+  head = plist->head;
+    
+  while ( head != NULL ) {
+    copy = create_singly_linked_list_element( head->data );
+    
+    if ( !copy ) {
+      free( copy );
+    }
+
+    if (prev == NULL) {
+      prev = copy;
+      list_copy->head = prev;
+    }
+    else {
+      prev->next = copy;
+      prev = prev->next;
+    }
+
+    head = head->next;
+  }
+
+  return list_copy;
 }
 
 SinglyLinkedListElement* prepend_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
@@ -163,31 +185,6 @@ SinglyLinkedListElement* append_singly_linked_list( SinglyLinkedList* plist, Sin
   }
   return new_node;
 }
-
-/*
-void remove_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
-  SinglyLinkedListElement* previous = NULL;
-  SinglyLinkedListElement* current = plist->head;
-
-  while ( NULL != current ) {
-    if ( current->data == pelement->data ) {
-      if ( plist->head == current ) {
-        plist->head = current->next;
-      }
-      if ( plist->tail == current ) {
-        plist->tail = previous;
-      }
-      if ( NULL != previous ) {
-        previous->next = current->next;
-      }
-      free( current );
-      return;
-    }
-    previous = current;
-    current = current->next;
-  }
-}
-*/
 
 void remove_element_singly_linked_list( SinglyLinkedList* plist, SinglyLinkedListElement* pelement ) {
   SinglyLinkedListElement *temp = plist->head;
@@ -227,7 +224,6 @@ void remove_all_singly_linked_list( SinglyLinkedList* plist ) {
 
   plist->head = NULL;
   plist->tail = NULL;
-  /*  free( plist ); */
   plist = NULL;
 }
 
