@@ -49,6 +49,8 @@ DoublyLinkedListElement* append_doubly_linked_list( DoublyLinkedList *plist, Dou
 
 void remove_element_doubly_linked_list( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func );
 
+void remove_element_doubly_linked_list_better( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func );
+
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element );
 
 bool remove_element_at_doubly_linked_list( DoublyLinkedList *plist, int index );
