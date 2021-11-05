@@ -300,41 +300,37 @@ void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedLis
 
 void remove_element_doubly_linked_list_better( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func ) {
   DoublyLinkedListElement *temp = plist->head;
-  /*  DoublyLinkedListElement *prev = temp; */
-
   /* deleting the head node */
   if ( temp != NULL && equal_func( temp, pelement ) ) {
     plist->head = temp->next;
     plist->head->prev = NULL;
     free( temp->data );
     free( temp );
+    --plist->size;
+    return;
   }
-  else {
-    while ( temp != NULL ) {
-      if ( equal_func( temp, pelement ) ) {
-	/* deleting the tail node */
-	if ( temp == plist->tail ) {
-	  plist->tail = temp->prev;
-	  plist->tail->next = NULL;
-	  free( temp->data );
-	  free( temp );
-	  temp = NULL;
-	  --plist->size;
-	  return;
-	}
-	temp->prev->next = temp->next;
-	temp->next->prev = temp->prev;
-	free( temp->data );
-	free( temp );
-	temp = NULL;
-      }
-      else {
-	/*	prev = temp; */
-	temp = temp->next;
-      }
+  while ( temp != NULL ) {
+    /* deleting the tail node */
+    if ( temp == plist->tail && equal_func( temp, pelement ) ) {
+      plist->tail = temp->prev;
+      plist->tail->next = NULL;
+      free( temp->data );
+      free( temp );
+      temp = NULL;
+      --plist->size;
+      return;
     }
+    if ( equal_func( temp, pelement ) ) {
+      temp->prev->next = temp->next;
+      temp->next->prev = temp->prev;
+      free( temp->data );
+      free( temp );
+      temp = NULL;
+      --plist->size;
+      return;
+    }
+    temp = temp->next;
   }
-  --plist->size;
 }
 
 void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
