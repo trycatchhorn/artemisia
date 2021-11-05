@@ -1144,15 +1144,18 @@ int test_remove_element_at_doubly_linked_list_zero() {
   DoublyLinkedListElement *tail_org;
   DoublyLinkedListElement *tail_org_prev;
   DoublyLinkedListElement *tail_org_next;
+  DoublyLinkedListElement *r1;
+  DoublyLinkedListElement *r2;
+  DoublyLinkedListElement *r3;
 
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
 
   DoublyLinkedList *list = create_doubly_linked_list();
-  append_doubly_linked_list( list, e1, sizeof( int ) );
-  append_doubly_linked_list( list, e2, sizeof( int ) );
-  append_doubly_linked_list( list, e3, sizeof( int ) );
+  r1 = append_doubly_linked_list( list, e1, sizeof( int ) );
+  r2 = append_doubly_linked_list( list, e2, sizeof( int ) );
+  r3 = append_doubly_linked_list( list, e3, sizeof( int ) );
 
   /* get size of list before remove */
   size_before_remove = get_size_doubly_linked_list( list );
@@ -1211,13 +1214,23 @@ int test_remove_element_at_doubly_linked_list_zero() {
   if ( result == 0 ) {
     printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero -> OK" );
   } else {
+    free( get_data_doubly_linked_list_element( r1 ) );
+    free( r1 );
     printf( "%s \n", "test_remove_element_at_doubly_linked_list_zero -> FAIL" );
   }
 
   /* clean up */
+  free( get_data_doubly_linked_list_element( r2 ) );
+  free( get_data_doubly_linked_list_element( r3 ) );
+
+  free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
 
+  free( r2 );
+  free( r3 );
+
+  free( e1 );
   free( e2 );
   free( e3 );
   free( list );
@@ -1487,7 +1500,7 @@ int main() {
   assert( test_remove_element_head_doubly_linked_list() == 0 );
   assert( test_remove_element_middle_doubly_linked_list() == 0 );
   assert( test_remove_element_tail_doubly_linked_list() == 0 );
-  /* assert( test_remove_element_at_doubly_linked_list_zero() == 0 ); */
+  assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
   /* assert( test_remove_element_at_doubly_linked_list_one() == 0 ); */
   /* assert( test_remove_element_at_doubly_linked_list_two() == 0 ); */
   /* assert( test_remove_all_doubly_linked_list() == 0 ); */
