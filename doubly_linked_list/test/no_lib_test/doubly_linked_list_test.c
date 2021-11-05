@@ -1073,7 +1073,8 @@ int test_remove_element_tail_doubly_linked_list() {
   size_before_remove = get_size_doubly_linked_list( list );
 
   /* remove element (tail) from the linked list */
-  remove_element_doubly_linked_list( list, e5, is_equal_int );
+  /* remove_element_doubly_linked_list( list, e5, is_equal_int ); */
+  remove_element_doubly_linked_list_better( list, e5, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
@@ -1115,6 +1116,7 @@ int test_remove_element_tail_doubly_linked_list() {
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
   free( get_data_doubly_linked_list_element( e4 ) );
+  free( get_data_doubly_linked_list_element( e5 ) );
 
   free( r1 );
   free( r2 );
@@ -1125,6 +1127,7 @@ int test_remove_element_tail_doubly_linked_list() {
   free( e2 );
   free( e3 );
   free( e4 );
+  free( e5 );
   free( list );
   return result;
 }
@@ -1483,7 +1486,7 @@ int main() {
   assert( test_remove_element_from_empty_doubly_linked_list() == 0 );
   assert( test_remove_element_head_doubly_linked_list() == 0 );
   assert( test_remove_element_middle_doubly_linked_list() == 0 );
-  /* assert( test_remove_element_tail_doubly_linked_list() == 0 ); */
+  assert( test_remove_element_tail_doubly_linked_list() == 0 );
   /* assert( test_remove_element_at_doubly_linked_list_zero() == 0 ); */
   /* assert( test_remove_element_at_doubly_linked_list_one() == 0 ); */
   /* assert( test_remove_element_at_doubly_linked_list_two() == 0 ); */
