@@ -802,7 +802,7 @@ int test_remove_element_none_doubly_linked_list() {
   size_before_remove =  get_size_doubly_linked_list( list );
 
   /* try to remove element which is not present in list */
-  remove_element_doubly_linked_list( list, e6, is_equal_int );
+  remove_element_doubly_linked_list_better( list, e6, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
