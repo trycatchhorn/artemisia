@@ -1461,12 +1461,18 @@ int test_remove_all_doubly_linked_list() {
   DoublyLinkedListElement *e4 = create_doubly_linked_list_element( &i4, sizeof( int ) );
   DoublyLinkedListElement *e5 = create_doubly_linked_list_element( &i5, sizeof( int ) );
   DoublyLinkedList *list = create_doubly_linked_list();
+  DoublyLinkedListElement *r1;
+  DoublyLinkedListElement *r2;
+  DoublyLinkedListElement *r3;
+  DoublyLinkedListElement *r4;
+  DoublyLinkedListElement *r5;
 
-  append_doubly_linked_list( list, e1, sizeof( int ) );
-  append_doubly_linked_list( list, e2, sizeof( int ) );
-  append_doubly_linked_list( list, e3, sizeof( int ) );
-  append_doubly_linked_list( list, e4, sizeof( int ) );
-  append_doubly_linked_list( list, e5, sizeof( int ) );
+  
+  r1 = append_doubly_linked_list( list, e1, sizeof( int ) );
+  r2 = append_doubly_linked_list( list, e2, sizeof( int ) );
+  r3 = append_doubly_linked_list( list, e3, sizeof( int ) );
+  r4 = append_doubly_linked_list( list, e4, sizeof( int ) );
+  r5 = append_doubly_linked_list( list, e5, sizeof( int ) );
 
   remove_all_doubly_linked_list( list );
 
@@ -1474,18 +1480,28 @@ int test_remove_all_doubly_linked_list() {
     result = -1;
   }
   if ( NULL != get_element_at_doubly_linked_list( list, 0 ) ) {
+    free( get_data_doubly_linked_list_element( r1 ) );
+    free( r1 );
     result = -1;
   }
   if ( NULL != get_element_at_doubly_linked_list( list, 1 ) ) {
+    free( get_data_doubly_linked_list_element( r2 ) );
+    free( r2 );
     result = -1;
   }
   if ( NULL != get_element_at_doubly_linked_list( list, 2 ) ) {
+    free( get_data_doubly_linked_list_element( r3 ) );
+    free( r3 );
     result = -1;
   }
   if ( NULL != get_element_at_doubly_linked_list( list, 3 ) ) {
+    free( get_data_doubly_linked_list_element( r4 ) );
+    free( r4 );
     result = -1;
   }
   if ( NULL != get_element_at_doubly_linked_list( list, 4 ) ) {
+    free( get_data_doubly_linked_list_element( r5 ) );
+    free( r5 );
     result = -1;
   }
   if ( NULL != get_head_doubly_linked_list( list ) ) {
@@ -1499,6 +1515,19 @@ int test_remove_all_doubly_linked_list() {
   } else {
     printf( "%s \n", "test_remove_all_doubly_linked_list -> FAIL" );
   }
+
+  free( get_data_doubly_linked_list_element( e1 ) );
+  free( get_data_doubly_linked_list_element( e2 ) );
+  free( get_data_doubly_linked_list_element( e3 ) );
+  free( get_data_doubly_linked_list_element( e4 ) );
+  free( get_data_doubly_linked_list_element( e5 ) );
+
+  free( e1 );
+  free( e2 );
+  free( e3 );
+  free( e4 );
+  free( e5 );
+  
   free( list );
   return result;
 }
@@ -1529,6 +1558,6 @@ int main() {
   assert( test_remove_element_at_doubly_linked_list_zero() == 0 );
   assert( test_remove_element_at_doubly_linked_list_one() == 0 );
   assert( test_remove_element_at_doubly_linked_list_two() == 0 );
-  /* assert( test_remove_all_doubly_linked_list() == 0 ); */
+  assert( test_remove_all_doubly_linked_list() == 0 );
   return 0;
 }

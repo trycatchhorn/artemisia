@@ -334,21 +334,24 @@ void remove_element_doubly_linked_list_better( DoublyLinkedList* plist, DoublyLi
 }
 
 void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
+  DoublyLinkedListElement* head;
   DoublyLinkedListElement* tmp;
-  DoublyLinkedListElement* current;
   if ( NULL == plist || !plist->size ) {
     return;
   }
 
-  current = plist->head;
-  while ( NULL != current ) {
-    tmp = current;
-    current = tmp->next;
-    free( tmp );
+  head = plist->head;
+  while ( NULL != head ) {
+    tmp = head->next;
+    free( head->data );
+    free( head );
+    head = tmp;
     --plist->size;
+    
   }
   plist->head = NULL;
   plist->tail = NULL;
+  plist = NULL;
 }
 
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element ) {
