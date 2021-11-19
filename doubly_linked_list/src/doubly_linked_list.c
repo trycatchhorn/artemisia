@@ -347,7 +347,6 @@ void remove_all_doubly_linked_list( DoublyLinkedList* plist ) {
     free( head );
     head = tmp;
     --plist->size;
-    
   }
   plist->head = NULL;
   plist->tail = NULL;
