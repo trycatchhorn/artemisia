@@ -267,38 +267,7 @@ DoublyLinkedListElement* append_doubly_linked_list( DoublyLinkedList *plist, Dou
   return new_element;
 }
 
-void remove_element_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, is_equal_doubly_linked_list_elements equal_func ) {
-  DoublyLinkedListElement *tmp;
-  DoublyLinkedListElement *previous = NULL;
-  DoublyLinkedListElement *current = plist->head;
-
-  while ( NULL != current ) {
-    if ( equal_func( current, pelement ) ) {
-
-      if ( plist->head == current ) {
-        /* remove the head element */
-        plist->head = current->next;
-      }
-      if ( plist->tail == current ) {
-        /* remove the tail element */
-        plist->tail = previous;
-      }
-      if ( NULL != previous ) {
-        previous->next = current->next;
-      }
-      /* update 'size' field of doubly linked list */
-      --plist->size;
-      tmp = current;
-      free( tmp->data );
-      free( tmp );
-      return;
-    }
-    previous = current;
-    current = current->next;
-  }
-}
-
-void remove_element_doubly_linked_list_better( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func ) {
+void remove_element_doubly_linked_list( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func ) {
   DoublyLinkedListElement *temp = plist->head;
   /* deleting the head node */
   if ( temp != NULL && equal_func( temp, pelement ) ) {

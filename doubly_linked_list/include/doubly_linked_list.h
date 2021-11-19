@@ -11,14 +11,9 @@ typedef bool ( * is_equal_doubly_linked_list_elements ) ( DoublyLinkedListElemen
 
 typedef void ( * element_operation ) ( void * );
 
-
 DoublyLinkedListElement* create_doubly_linked_list_element( void *data, size_t data_size );
 
 bool is_equal_doubly_linked_list( DoublyLinkedList *plist1, DoublyLinkedList *plist2, is_equal_doubly_linked_list_elements equal_func );
-
-
-
-
 
 void* get_data_doubly_linked_list_element();
 
@@ -36,7 +31,6 @@ DoublyLinkedListElement* get_tail_doubly_linked_list( DoublyLinkedList *plist );
 
 DoublyLinkedListElement* get_element_at_doubly_linked_list( DoublyLinkedList *plist, int index );
 
-
 void print_doubly_linked_list_forward( DoublyLinkedList *plist, void ( * print_elem ) ( void * ) );
 
 void print_doubly_linked_list_backward( DoublyLinkedList *plist, void ( * print_elem ) ( void * ) );
@@ -48,8 +42,6 @@ DoublyLinkedListElement* prepend_doubly_linked_list( DoublyLinkedList *plist, Do
 DoublyLinkedListElement* append_doubly_linked_list( DoublyLinkedList *plist, DoublyLinkedListElement *pelement, size_t data_size );
 
 void remove_element_doubly_linked_list( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func );
-
-void remove_element_doubly_linked_list_better( DoublyLinkedList* plist, DoublyLinkedListElement* pelement, is_equal_doubly_linked_list_elements equal_func );
 
 bool remove_element( DoublyLinkedList *plist, DoublyLinkedListElement *element );
 

@@ -580,21 +580,18 @@ int test_is_equal_doubly_linked_list() {
   free( get_data_doubly_linked_list_element( r4 ) );
   free( get_data_doubly_linked_list_element( r5 ) );
   free( get_data_doubly_linked_list_element( r6 ) );
-
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
   free( get_data_doubly_linked_list_element( e4 ) );
   free( get_data_doubly_linked_list_element( e5 ) );
   free( get_data_doubly_linked_list_element( e6 ) );
-
   free( r1 );
   free( r2 );
   free( r3 );
   free( r4 );
   free( r5 );
   free( r6 );
-
   free( e1 );
   free( e2 );
   free( e3 );
@@ -655,11 +652,9 @@ int test_shallow_copy_doubly_linked_list() {
   free( get_data_doubly_linked_list_element( r1 ) );
   free( get_data_doubly_linked_list_element( r2 ) );
   free( get_data_doubly_linked_list_element( r3 ) );
-
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
-
   free( r1 );
   free( r2 );
   free( r3 );
@@ -802,7 +797,7 @@ int test_remove_element_none_doubly_linked_list() {
   size_before_remove =  get_size_doubly_linked_list( list );
 
   /* try to remove element which is not present in list */
-  remove_element_doubly_linked_list_better( list, e6, is_equal_int );
+  remove_element_doubly_linked_list( list, e6, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
@@ -902,9 +897,7 @@ int test_remove_element_head_doubly_linked_list() {
   size_before_remove = get_size_doubly_linked_list( list );
 
   /* remove element (head) from the linked list */
-  /* remove_element_doubly_linked_list( list, e1, is_equal_int ); */
-
-  remove_element_doubly_linked_list_better( list, e1, is_equal_int );
+  remove_element_doubly_linked_list( list, e1, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
@@ -973,7 +966,6 @@ int test_remove_element_middle_doubly_linked_list() {
   DoublyLinkedListElement *r4;
   DoublyLinkedListElement *r5;
 
-  
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -992,8 +984,7 @@ int test_remove_element_middle_doubly_linked_list() {
   size_before_remove = get_size_doubly_linked_list( list );
 
   /* remove middle element */
-  /* remove_element_doubly_linked_list( list, e3, is_equal_int ); */
-  remove_element_doubly_linked_list_better( list, e3, is_equal_int );
+  remove_element_doubly_linked_list( list, e3, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
@@ -1073,8 +1064,7 @@ int test_remove_element_tail_doubly_linked_list() {
   size_before_remove = get_size_doubly_linked_list( list );
 
   /* remove element (tail) from the linked list */
-  /* remove_element_doubly_linked_list( list, e5, is_equal_int ); */
-  remove_element_doubly_linked_list_better( list, e5, is_equal_int );
+  remove_element_doubly_linked_list( list, e5, is_equal_int );
 
   /* get size of list after remove */
   size_after_remove = get_size_doubly_linked_list( list );
@@ -1111,18 +1101,15 @@ int test_remove_element_tail_doubly_linked_list() {
   free( get_data_doubly_linked_list_element( r2 ) );
   free( get_data_doubly_linked_list_element( r3 ) );
   free( get_data_doubly_linked_list_element( r4 ) );
-
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
   free( get_data_doubly_linked_list_element( e4 ) );
   free( get_data_doubly_linked_list_element( e5 ) );
-
   free( r1 );
   free( r2 );
   free( r3 );
   free( r4 );
-
   free( e1 );
   free( e2 );
   free( e3 );
@@ -1222,14 +1209,11 @@ int test_remove_element_at_doubly_linked_list_zero() {
   /* clean up */
   free( get_data_doubly_linked_list_element( r2 ) );
   free( get_data_doubly_linked_list_element( r3 ) );
-
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
-
   free( r2 );
   free( r3 );
-
   free( e1 );
   free( e2 );
   free( e3 );
@@ -1252,7 +1236,7 @@ int test_remove_element_at_doubly_linked_list_one() {
   DoublyLinkedListElement *r1;
   DoublyLinkedListElement *r2;
   DoublyLinkedListElement *r3;
-  
+
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -1330,14 +1314,11 @@ int test_remove_element_at_doubly_linked_list_one() {
   /* clean up */
   free( get_data_doubly_linked_list_element( r1 ) );
   free( get_data_doubly_linked_list_element( r3 ) );
-  
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
-
   free( r1 );
   free( r3 );
-  
   free( e1 );
   free( e2 );
   free( e3 );
@@ -1360,7 +1341,7 @@ int test_remove_element_at_doubly_linked_list_two() {
   DoublyLinkedListElement *r1;
   DoublyLinkedListElement *r2;
   DoublyLinkedListElement *r3;
-  
+
   DoublyLinkedListElement *e1 = create_doubly_linked_list_element( &i1, sizeof( int ) );
   DoublyLinkedListElement *e2 = create_doubly_linked_list_element( &i2, sizeof( int ) );
   DoublyLinkedListElement *e3 = create_doubly_linked_list_element( &i3, sizeof( int ) );
@@ -1433,13 +1414,10 @@ int test_remove_element_at_doubly_linked_list_two() {
   free( get_data_doubly_linked_list_element( e1 ) );
   free( get_data_doubly_linked_list_element( e2 ) );
   free( get_data_doubly_linked_list_element( e3 ) );
-
   free( get_data_doubly_linked_list_element( r1 ) );
   free( get_data_doubly_linked_list_element( r2 ) );
-  
   free( r1 );
   free( r2 );
-  
   free( e1 );
   free( e2 );
   free( e3 );
@@ -1467,7 +1445,6 @@ int test_remove_all_doubly_linked_list() {
   DoublyLinkedListElement *r4;
   DoublyLinkedListElement *r5;
 
-  
   r1 = append_doubly_linked_list( list, e1, sizeof( int ) );
   r2 = append_doubly_linked_list( list, e2, sizeof( int ) );
   r3 = append_doubly_linked_list( list, e3, sizeof( int ) );
@@ -1521,13 +1498,11 @@ int test_remove_all_doubly_linked_list() {
   free( get_data_doubly_linked_list_element( e3 ) );
   free( get_data_doubly_linked_list_element( e4 ) );
   free( get_data_doubly_linked_list_element( e5 ) );
-
   free( e1 );
   free( e2 );
   free( e3 );
   free( e4 );
   free( e5 );
-  
   free( list );
   return result;
 }
